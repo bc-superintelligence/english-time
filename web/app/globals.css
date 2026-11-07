@@ -143,7 +143,7 @@ i[lang="en"] { font-family: var(--serif); font-style: italic; font-weight: 600; 
 /* cinta de promociones */
 .cinta { display: block; position: relative; z-index: 1; background: var(--rojo); color: #fff; text-decoration: none; overflow: hidden; }
 .cinta-pista { display: flex; width: max-content; }
-.anim .cinta-pista { animation: deslizar 46s linear infinite; }
+.anim .cinta-pista { animation: deslizar 64s linear infinite; }
 .cinta:hover .cinta-pista, .cinta:focus-visible .cinta-pista { animation-play-state: paused; }
 .ci { display: inline-flex; align-items: center; gap: 24px; padding: 16px 24px 16px 0; font-weight: 700; font-size: 1.0625rem; white-space: nowrap; }
 .ci b { font-family: var(--serif); font-weight: 700; font-optical-sizing: none; font-variation-settings: 'opsz' 16; font-size: 1.2em; }
@@ -444,12 +444,14 @@ footer img { height: 44px; width: auto; }
 /* Clases según el objetivo */
 .objetivos { background: var(--noche); color: #fff; font-weight: 400; }
 .objetivos .encabezado p { color: #D5DEF0; }
-.objetivos-lista { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 64px; }
-.objetivo { display: grid; gap: 12px; align-content: start; padding-top: 22px; background: linear-gradient(var(--rojo), var(--rojo)) no-repeat 0 0 / 100% 2px; }
+.objetivos-lista { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 52px 48px; }
+.objetivo-icono { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; margin-top: 6px; background: rgba(212,17,31,.18); box-shadow: inset 0 0 0 1px rgba(255,107,117,.35); color: #fff; }
+.objetivo-icono svg { width: 26px; height: 26px; }
+.objetivo { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 22px; background: linear-gradient(var(--rojo), var(--rojo)) no-repeat 0 0 / 100% 2px; }
 .objetivo h3 { color: #fff; font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem); font-weight: 600; font-variation-settings: 'opsz' 24; }
 .objetivo p { color: #D5DEF0; font-size: 1.125rem; max-width: 30em; }
 .enlace-wa {
-  justify-self: start; display: inline-flex; align-items: center; gap: .55em; margin-top: 4px; padding-block: 10px;
+  display: inline-flex; align-items: center; gap: .55em; margin-top: auto; padding-block: 10px;
   color: #fff; font-weight: 700; text-decoration: none; border-bottom: 2px solid rgba(255,255,255,.35); transition: border-color .2s ease, gap .25s var(--suave);
 }
 .enlace-wa:hover { border-color: var(--rojo); gap: .8em; }
@@ -457,8 +459,39 @@ footer img { height: 44px; width: auto; }
 .ciudades { margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.14); color: #C3D0E8; font-size: 1rem; max-width: 46em; }
 .anim .objetivo { opacity: 0; transform: translateY(22px); background-size: 0% 2px; transition: opacity .7s ease, transform .8s var(--suave), background-size .9s ease; }
 .anim .objetivo.visto { opacity: 1; transform: none; background-size: 100% 2px; }
+@media (max-width: 1000px) {
+  .objetivos-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 40px; }
+}
 @media (max-width: 700px) {
   .objetivos-lista { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* Garantía: tus clases nunca se pierden (el reloj se devuelve al aparecer) */
+.garantia {
+  position: relative; overflow: hidden; isolation: isolate; margin-top: 40px;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px 44px; align-items: center;
+  padding: 38px 44px; border-radius: 22px; background: var(--noche); color: #fff; font-weight: 400;
+}
+.garantia::before {
+  content: ''; position: absolute; z-index: -1; top: -60%; left: -10%; width: 520px; height: 520px;
+  background: radial-gradient(closest-side, rgba(212,17,31,.32), transparent); pointer-events: none;
+}
+.garantia-reloj { width: 128px; height: 128px; color: #fff; overflow: visible; }
+.garantia h3 { color: #fff; font-size: clamp(1.9rem, 1.5rem + 1.5vw, 2.7rem); font-weight: 600; font-variation-settings: 'opsz' 24; line-height: 1.05; }
+.garantia p { color: #D5DEF0; font-size: 1.125rem; margin-top: 12px; max-width: 38em; }
+.garantia .garantia-nota { display: inline-block; margin-top: 16px; padding: .45em .9em; border-radius: 14px; background: rgba(255,255,255,.09); color: #fff; font-size: .9375rem; font-weight: 600; }
+.garantia-manos line { transform-box: view-box; transform-origin: 60px 60px; }
+.anim .garantia .garantia-flecha { stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 1.4s var(--suave) .35s; }
+.anim .garantia .garantia-punta { opacity: 0; transition: opacity .3s ease 1.55s; }
+.anim .garantia.visto .garantia-flecha { stroke-dashoffset: 0; }
+.anim .garantia.visto .garantia-punta { opacity: 1; }
+.anim .garantia.visto .mano-minuto { animation: devolver-min 1.8s var(--suave) .35s both; }
+.anim .garantia.visto .mano-hora { animation: devolver-hora 1.8s var(--suave) .35s both; }
+@keyframes devolver-min { from { transform: rotate(720deg); } to { transform: rotate(0); } }
+@keyframes devolver-hora { from { transform: rotate(60deg); } to { transform: rotate(0); } }
+@media (max-width: 700px) {
+  .garantia { grid-template-columns: 1fr; padding: 30px 22px; gap: 20px; }
+  .garantia-reloj { width: 92px; height: 92px; }
 }
 
 /* Página 404 */

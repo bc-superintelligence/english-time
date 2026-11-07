@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   creator: NEGOCIO.nombre,
   publisher: NEGOCIO.nombre,
   category: 'education',
-  alternates: { canonical: '/', languages: { 'es-CO': '/', 'x-default': '/' } },
+  alternates: { canonical: '/', languages: { es: '/', 'x-default': '/' } },
   openGraph: {
     type: 'website',
-    locale: 'es_CO',
+    locale: 'es_LA',
     url: '/',
     siteName: NEGOCIO.nombre,
     title: 'English Time: imagina un día hablando inglés',
-    description: 'Clases de inglés personalizadas 1 a 1 en vivo por Zoom, para toda Colombia. Tu horario, tu nivel y conversación desde el primer día.',
+    description: 'Clases de inglés personalizadas 1 a 1 en vivo por Zoom, desde cualquier país. Tu horario, tu nivel y tus clases nunca se pierden.',
   },
   twitter: {
     card: 'summary_large_image',
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   preload('/assets/fonts/hanken-grotesk.woff2', { as: 'font', type: 'font/woff2', crossOrigin: '' });
   return (
     // suppressHydrationWarning: el script de abajo agrega clases a <html> antes de que React hidrate.
-    <html lang="es-CO" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: ACTIVAR_ANIMACIONES }} />
       </head>

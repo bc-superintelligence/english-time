@@ -1,12 +1,13 @@
-import { FIN_PROMOS, NEGOCIO, PLANES, PREGUNTAS, SITIO, TELEFONO, WHATSAPP } from './contenido';
+import { FIN_PROMOS, GARANTIA, NEGOCIO, PLANES, PREGUNTAS, SITIO, TELEFONO, WHATSAPP } from './contenido';
 
 /* Palabras clave principales: guían títulos, descripciones y datos estructurados. */
 export const SEO = {
   titulo: 'Clases de inglés personalizadas online 1 a 1 | English Time',
-  descripcion: 'Aprende inglés con clases personalizadas 1 a 1 en vivo por Zoom. Tu horario, tu nivel y conversación desde el primer día, desde cualquier ciudad de Colombia.',
+  descripcion: 'Clases de inglés personalizadas 1 a 1 por Zoom, desde cualquier país. Preparación para certificaciones y ciudadanía americana. Si faltas, tu clase se reprograma.',
   palabrasClave: [
     'clases de inglés', 'clases de inglés online', 'clases de inglés personalizadas', 'aprender inglés',
-    'clases de inglés 1 a 1', 'profesor de inglés', 'inglés por Zoom', 'clases de inglés Colombia',
+    'clases de inglés 1 a 1', 'profesor de inglés', 'inglés por Zoom', 'clases de inglés online desde cualquier país', 'clases de inglés Colombia',
+    'preparación examen de ciudadanía americana', 'clases de inglés para la ciudadanía', 'preparación para exámenes de certificación de inglés',
     'inglés conversacional', 'inglés para viajar', 'inglés para el trabajo', 'inglés desde cero',
     'curso de inglés online', 'clases particulares de inglés',
   ],
@@ -27,16 +28,18 @@ export function datosEstructurados() {
     logo: { '@type': 'ImageObject', url: `${SITIO}/assets/logo-oscuro.png`, width: 867, height: 624 },
     image: `${SITIO}/opengraph-image.png`,
     telephone: TELEFONO,
-    areaServed: { '@type': 'Country', name: 'Colombia' },
+    areaServed: 'Worldwide',
     availableLanguage: ['es', 'en'],
-    knowsAbout: ['Inglés', 'Inglés conversacional', 'Inglés para viajar', 'Inglés para el trabajo', 'Inglés desde cero'],
+    knowsAbout: [
+      'Inglés', 'Inglés conversacional', 'Inglés para viajar', 'Inglés para el trabajo', 'Inglés desde cero',
+      'Preparación para el examen de ciudadanía de Estados Unidos', 'Preparación para exámenes de certificación de inglés',
+    ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       telephone: TELEFONO,
       url: `https://wa.me/${WHATSAPP}`,
       availableLanguage: ['Spanish', 'English'],
-      areaServed: 'CO',
     },
     makesOffer: [
       { nombre: 'Bootcamp Navideño de inglés para viajar', texto: '7 días de inglés para viajar con clases en vivo de 45 minutos en diciembre.', valor: '$49.000' },
@@ -62,7 +65,7 @@ export function datosEstructurados() {
     url: `${SITIO}/`,
     name: NEGOCIO.nombre,
     description: SEO.descripcion,
-    inLanguage: 'es-CO',
+    inLanguage: 'es',
     publisher: { '@id': id('organizacion') },
   };
 
@@ -72,7 +75,7 @@ export function datosEstructurados() {
     url: `${SITIO}/`,
     name: SEO.titulo,
     description: SEO.descripcion,
-    inLanguage: 'es-CO',
+    inLanguage: 'es',
     isPartOf: { '@id': id('sitio') },
     about: { '@id': id('organizacion') },
     primaryImageOfPage: { '@type': 'ImageObject', url: `${SITIO}/opengraph-image.png`, width: 1200, height: 630 },
@@ -84,7 +87,7 @@ export function datosEstructurados() {
     '@type': 'Course',
     '@id': id('curso'),
     name: 'Clases de inglés personalizadas 1 a 1 por Zoom',
-    description: 'Clases de inglés online 1 a 1 con profesor, en vivo por Zoom. Empiezas en tu nivel, desde cero hasta avanzado, escoges tu horario y hablas desde la primera clase.',
+    description: `Clases de inglés online 1 a 1 con profesor, en vivo por Zoom, desde cualquier país. Empiezas en tu nivel, desde cero hasta avanzado, escoges tu horario y hablas desde la primera clase. ${GARANTIA.titulo} Si no puedes asistir, tu clase se reprograma.`,
     provider: proveedor,
     inLanguage: 'es',
     teaches: 'Inglés',
@@ -127,6 +130,30 @@ export function datosEstructurados() {
     },
   };
 
+  // Preparaciones específicas: se toman con los mismos planes mensuales de clases 1 a 1.
+  const preparacion = (fragmento: string, nombre: string, descripcion: string, ensena: string) => ({
+    '@type': 'Course',
+    '@id': id(fragmento),
+    name: nombre,
+    description: descripcion,
+    provider: proveedor,
+    teaches: ensena,
+    url: `${SITIO}/#objetivos`,
+    offers: { '@type': 'Offer', category: 'Paid', price: precio(PLANES[0].precio), priceCurrency: 'COP', description: 'Desde el plan mensual de 8 clases 1 a 1.' },
+    hasCourseInstance: {
+      '@type': 'CourseInstance',
+      courseMode: 'Online',
+      location: { '@type': 'VirtualLocation', url: `${SITIO}/` },
+      courseSchedule: { '@type': 'Schedule', repeatFrequency: 'Weekly', repeatCount: 4 },
+    },
+  });
+  const ciudadania = preparacion('ciudadania', 'Preparación para el examen de ciudadanía americana',
+    'Clases 1 a 1 por Zoom para preparar la entrevista en inglés del proceso de naturalización de Estados Unidos: hablar con el oficial, leer, escribir y responder las preguntas.',
+    'Inglés para el examen de ciudadanía de Estados Unidos');
+  const certificacion = preparacion('certificacion', 'Preparación para exámenes de certificación de inglés',
+    'Clases 1 a 1 por Zoom para preparar el formato, los tiempos y las cuatro habilidades del examen de certificación: hablar, escuchar, leer y escribir.',
+    'Inglés para exámenes de certificación');
+
   const preguntas = {
     '@type': 'FAQPage',
     '@id': id('preguntas'),
@@ -137,7 +164,7 @@ export function datosEstructurados() {
     })),
   };
 
-  return { '@context': 'https://schema.org', '@graph': [organizacion, sitio, pagina, curso, bootcamp, preguntas] };
+  return { '@context': 'https://schema.org', '@graph': [organizacion, sitio, pagina, curso, ciudadania, certificacion, bootcamp, preguntas] };
 }
 
 /** JSON listo para <script type="application/ld+json">, sin "<" que pueda cerrar la etiqueta. */

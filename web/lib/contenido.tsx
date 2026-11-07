@@ -9,7 +9,7 @@ export const SITIO = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://englishtime.c
 export const NEGOCIO = {
   nombre: 'English Time',
   lema: 'easy, fast, fun!',
-  descripcion: 'Academia de inglés en línea con clases personalizadas 1 a 1 en vivo por Zoom, para toda Colombia. Tú escoges el horario, empiezas en tu nivel y hablas desde el primer día.',
+  descripcion: 'Academia de inglés en línea con clases personalizadas 1 a 1 en vivo por Zoom, para estudiantes en cualquier país. Tú escoges el horario, empiezas en tu nivel, hablas desde el primer día y tus clases nunca se pierden: si no puedes asistir, se reprograman.',
 };
 
 export const WHATSAPP = '573016507626';
@@ -80,8 +80,9 @@ export const ESCENAS: Escena[] = [
 
 export const VERSUS: { antes: string; despues: string }[] = [
   { antes: 'Grupos de 20, donde hablas dos minutos por clase.', despues: 'Clases 1 a 1: la clase entera es para ti.' },
+  { antes: 'Si faltas a una clase, la pierdes.', despues: 'Si no puedes asistir, tu clase se reprograma. Nunca la pierdes.' },
   { antes: 'Gramática en el tablero y cero conversación.', despues: 'Hablas desde el primer día, a tu nivel.' },
-  { antes: 'Horarios fijos y trancones para llegar a la academia.', despues: 'En vivo por Zoom, desde tu casa y en el horario que tú escojas.' },
+  { antes: 'Horarios fijos y tráfico para llegar a la academia.', despues: 'En vivo por Zoom, desde tu casa y en el horario que tú escojas.' },
   { antes: 'Apps que te felicitan por la racha, pero nunca te hacen hablar.', despues: 'Una persona real que te escucha, te corrige y te anima.' },
   { antes: 'Pena de equivocarte delante de todos.', despues: 'Solo tú y tu profe. Equivocarte es parte de aprender.' },
 ];
@@ -99,7 +100,16 @@ export const CINTA: { texto: string; destacado?: string }[] = [
   { texto: 'Paga un mes, estudia dos' },
   { texto: 'Plan 90: ', destacado: '15% menos' },
   { texto: 'Congela tu precio ', destacado: '2026' },
+  { texto: 'Tus clases nunca se pierden' },
+  { texto: 'Preparación para la ciudadanía americana' },
 ];
+
+/** Garantía de las clases personalizadas: si no puedes asistir, la clase se reprograma. */
+export const GARANTIA = {
+  titulo: 'Tus clases nunca se pierden.',
+  texto: '¿Te surgió algo y no puedes asistir? Tu clase se reprograma para otro día y otra hora. Cada clase que pagas, la recibes.',
+  nota: 'Aplica para clases personalizadas 1 a 1.',
+};
 
 export type Promo = {
   /** Id de la pieza en public/piezas/piezas.html */
@@ -156,38 +166,53 @@ export const PLANES: { veces: string; clases: string; precio: string; porClase: 
 
 export const PREGUNTAS: { pregunta: string; respuesta: string }[] = [
   { pregunta: '¿Cómo son las clases de inglés personalizadas?', respuesta: 'Son clases 1 a 1 en vivo por Zoom: solo tú y tu profe. Avanzas a tu ritmo, en tu nivel y con conversación desde el primer día.' },
-  { pregunta: '¿Las clases de inglés son online o presenciales?', respuesta: 'Son online, en vivo por Zoom. Puedes tomarlas desde cualquier ciudad de Colombia, o desde otro país, con una conexión a internet.' },
-  { pregunta: '¿Cuánto cuestan las clases de inglés?', respuesta: 'Los planes mensuales cuestan $480.000 (8 clases), $700.000 (12 clases) o $850.000 (16 clases), así que cada clase sale entre $53.100 y $60.000. Hasta el 28 de noviembre hay promociones de Black Friday.' },
+  { pregunta: '¿Las clases de inglés son online o presenciales?', respuesta: 'Son online, en vivo por Zoom. Puedes tomarlas desde cualquier país del mundo con una conexión a internet, y el horario se acuerda según tu zona horaria.' },
+  { pregunta: '¿Qué pasa si no puedo asistir a una clase?', respuesta: 'Tu clase no se pierde: se reprograma para otro día y otra hora. Esto aplica para las clases personalizadas 1 a 1.' },
+  { pregunta: '¿Cuánto cuestan las clases de inglés?', respuesta: 'Los planes mensuales cuestan $480.000 (8 clases), $700.000 (12 clases) o $850.000 (16 clases) en pesos colombianos, así que cada clase sale entre $53.100 y $60.000. Hasta el 28 de noviembre hay promociones de Black Friday.' },
+  { pregunta: '¿Me preparan para el examen de ciudadanía americana o para una certificación de inglés?', respuesta: 'Sí. Si vas a presentar el examen de ciudadanía de Estados Unidos o un examen de certificación de inglés, tus clases 1 a 1 se enfocan en ese examen, su formato y lo que te van a preguntar, para que llegues seguro.' },
   { pregunta: '¿Necesito saber algo de inglés para empezar?', respuesta: 'No. Empiezas en tu nivel, desde cero si hace falta, y hablas desde la primera clase.' },
   { pregunta: '¿Cuántas clases de inglés a la semana debo tomar?', respuesta: 'Puedes tomar 2, 3 o 4 clases por semana. Con más clases a la semana avanzas más rápido y el precio por clase baja.' },
-  { pregunta: '¿Cómo pago?', respuesta: 'Por Nequi, Daviplata, Davivienda o Bold. Escríbele a Luis por WhatsApp y te envía los datos.' },
+  { pregunta: '¿Cómo pago?', respuesta: 'Por Nequi, Daviplata, Davivienda o Bold. Si estás fuera de Colombia, Luis te indica cómo pagar desde tu país. Escríbele por WhatsApp y te envía los datos.' },
   { pregunta: '¿Cuándo empiezo?', respuesta: 'Apenas confirmes tu pago, cuadras con Luis el día y la hora de tus clases.' },
   { pregunta: '¿Hasta cuándo aplican las promociones?', respuesta: 'Hasta el 28 de noviembre de 2026. Las que tienen cupos limitados se cierran antes si se llenan.' },
   { pregunta: '¿Puedo cambiar mi horario después?', respuesta: 'Sí. Tu horario se ajusta a tu rutina; lo acuerdas directamente con tu profe.' },
 ];
 
+export type IconoObjetivo = 'trabajo' | 'ciudadania' | 'examen' | 'viajar' | 'conversar' | 'cero';
+
 /** Para qué quiere la gente el inglés: cada objetivo lleva su propio mensaje de WhatsApp. */
-export const OBJETIVOS: { titulo: string; texto: string; boton: string; mensaje: string }[] = [
+export const OBJETIVOS: { icono: IconoObjetivo; titulo: string; texto: string; boton: string; mensaje: string }[] = [
   {
-    titulo: 'Inglés para el trabajo',
+    icono: 'trabajo', titulo: 'Inglés para el trabajo',
     texto: 'Entrevistas, reuniones, correos y presentaciones. Practicas las situaciones de tu trabajo hasta que te salgan naturales.',
     boton: 'Quiero inglés para mi trabajo', mensaje: 'Hola Luis, quiero clases de inglés para mi trabajo.',
   },
   {
-    titulo: 'Inglés para viajar',
+    icono: 'ciudadania', titulo: 'Examen de ciudadanía americana',
+    texto: 'Te preparas para la entrevista en inglés del proceso de naturalización: hablar con el oficial, leer, escribir y responder las preguntas con seguridad.',
+    boton: 'Quiero prepararme para la ciudadanía', mensaje: 'Hola Luis, quiero prepararme para el examen de ciudadanía americana.',
+  },
+  {
+    icono: 'examen', titulo: 'Exámenes de certificación',
+    texto: 'Practicas el formato, los tiempos y las cuatro habilidades del examen que vas a presentar: hablar, escuchar, leer y escribir.',
+    boton: 'Quiero preparar mi examen', mensaje: 'Hola Luis, quiero prepararme para un examen de certificación de inglés.',
+  },
+  {
+    icono: 'viajar', titulo: 'Inglés para viajar',
     texto: 'Aeropuerto, migración, hotel, restaurantes y imprevistos. Para que viajes sin depender de nadie.',
     boton: 'Quiero inglés para viajar', mensaje: 'Hola Luis, quiero clases de inglés para viajar.',
   },
   {
-    titulo: 'Inglés conversacional',
+    icono: 'conversar', titulo: 'Inglés conversacional',
     texto: 'Si entiendes pero te bloqueas al hablar: clases para soltarte, ganar fluidez y perderle el miedo a equivocarte.',
     boton: 'Quiero hablar con fluidez', mensaje: 'Hola Luis, quiero clases de inglés conversacional.',
   },
   {
-    titulo: 'Inglés desde cero',
+    icono: 'cero', titulo: 'Inglés desde cero',
     texto: 'Nunca lo estudiaste o se te olvidó todo. Empiezas por lo básico, a tu ritmo y hablando desde la primera clase.',
     boton: 'Quiero empezar desde cero', mensaje: 'Hola Luis, quiero empezar a aprender inglés desde cero.',
   },
 ];
 
-export const CIUDADES = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena', 'Bucaramanga', 'Pereira'];
+/** Las clases son online: se toman desde cualquier país. Estos son ejemplos para el texto. */
+export const PAISES = ['Colombia', 'Estados Unidos', 'México', 'España', 'Canadá'];

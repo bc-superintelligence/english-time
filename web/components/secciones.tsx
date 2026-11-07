@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element -- los logos y la mascota ya están optimizados; se usan <img> para que el HTML quede igual a la landing original. */
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { Cuenta, Icono, Medidor, Revelar, retraso } from './base';
 import {
-  CINTA, CIUDADES, ESCENAS, MENSAJES, OBJETIVOS, PASOS, PLANES, PREGUNTAS, PROMOS, TELEFONO, TELEFONO_VISIBLE, VERSUS, wa,
+  CINTA, ESCENAS, GARANTIA, MENSAJES, OBJETIVOS, PAISES, PASOS, PLANES, PREGUNTAS, PROMOS, TELEFONO, TELEFONO_VISIBLE, VERSUS, wa,
 } from '@/lib/contenido';
+import type { IconoObjetivo } from '@/lib/contenido';
 
 const externo = { target: '_blank', rel: 'noopener' } as const;
 
@@ -164,6 +165,15 @@ export function Clases() {
 }
 
 /* ---------- clases según el objetivo ---------- */
+const TRAZOS: Record<IconoObjetivo, ReactNode> = {
+  trabajo: <><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18M11 12.5v2h2v-2" /></>,
+  ciudadania: <><path d="M5 21V3.5" /><path d="M5 4h13l-2.5 4.25L18 12.5H5" /><path d="M3 21h5" /></>,
+  examen: <><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21H12" /><path d="M14 3l5 5h-5z" /><path d="M8 11h6M8 14.5h3.5" /><circle cx="17" cy="16" r="2.8" /><path d="M15.6 18.5 15 22l2-1.1 2 1.1-.6-3.5" /></>,
+  viajar: <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />,
+  conversar: <><path d="M20.5 11.5a7.5 7.5 0 0 1-10.9 6.7L4 19.5l1.4-4.6A7.5 7.5 0 1 1 20.5 11.5z" /><path d="M9 11.5h.01M13 11.5h.01M17 11.5h.01" strokeWidth="2.6" /></>,
+  cero: <><path d="M12 21v-8.5" /><path d="M12 12.5C12 8.4 9 5.5 4 5.5c0 4.1 3 7 8 7z" /><path d="M12 14.5c0-3.3 2.5-6 7-6 0 3.4-2.5 6-7 6z" /></>,
+};
+
 export function Objetivos() {
   return (
     <section className="seccion objetivos" id="objetivos" aria-labelledby="t-objetivos">
@@ -174,14 +184,17 @@ export function Objetivos() {
         </div>
         <ul className="objetivos-lista">
           {OBJETIVOS.map((o, i) => (
-            <li className="objetivo" style={i ? { transitionDelay: `${(i % 2) * 0.12}s` } : undefined} key={o.titulo}>
+            <li className="objetivo" style={i % 3 ? { transitionDelay: `${(i % 3) * 0.12}s` } : undefined} key={o.titulo}>
+              <span className="objetivo-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">{TRAZOS[o.icono]}</svg>
+              </span>
               <h3>{o.titulo}</h3>
               <p>{o.texto}</p>
               <a className="enlace-wa" href={wa(o.mensaje)} {...externo}><Icono id="wa" />{o.boton}</a>
             </li>
           ))}
         </ul>
-        <p className="ciudades aparece">Clases de inglés online para toda Colombia: {CIUDADES.join(', ')} o donde estés. Solo necesitas internet.</p>
+        <p className="ciudades aparece">Clases de inglés online desde cualquier país: {PAISES.join(', ')} o donde estés. Solo necesitas internet, y el horario se acuerda según tu zona horaria.</p>
       </div>
     </section>
   );
@@ -250,6 +263,32 @@ export function Promociones() {
   );
 }
 
+/* ---------- garantía: las clases personalizadas se reprograman ---------- */
+function Garantia() {
+  return (
+    <div className="garantia aparece">
+      <svg className="garantia-reloj" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="38" fill="none" stroke="currentColor" strokeWidth="5" />
+        <g stroke="currentColor" strokeWidth="4" strokeLinecap="round" opacity=".6">
+          <path d="M60 28v6M92 60h-6M60 92v-6M28 60h6" />
+        </g>
+        <path className="garantia-flecha" d="M60 9 A51 51 0 1 0 111 60" fill="none" stroke="#FF4D5A" strokeWidth="6" strokeLinecap="round" pathLength="100" />
+        <path d="M104 66.5 111 57.5 118 66.5" fill="none" stroke="#FF4D5A" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" className="garantia-punta" />
+        <g className="garantia-manos" stroke="currentColor" strokeLinecap="round">
+          <line className="mano-hora" x1="60" y1="60" x2="60" y2="42" strokeWidth="6" />
+          <line className="mano-minuto" x1="60" y1="60" x2="76" y2="60" strokeWidth="4.5" />
+        </g>
+        <circle cx="60" cy="60" r="5" fill="currentColor" />
+      </svg>
+      <div>
+        <h3>{GARANTIA.titulo}</h3>
+        <p>{GARANTIA.texto}</p>
+        <p className="garantia-nota">{GARANTIA.nota}</p>
+      </div>
+    </div>
+  );
+}
+
 /* ---------- planes mensuales ---------- */
 export function Planes() {
   return (
@@ -268,7 +307,8 @@ export function Planes() {
             </div>
           ))}
         </div>
-        <p className="nota">Precios en pesos colombianos. Pagas por Nequi, Daviplata, Davivienda o Bold.</p>
+        <Garantia />
+        <p className="nota">Precios en pesos colombianos. Pagas por Nequi, Daviplata, Davivienda o Bold; si estás fuera de Colombia, Luis te indica cómo pagar desde tu país.</p>
       </div>
     </section>
   );
@@ -314,7 +354,7 @@ export function PiePagina() {
     <footer>
       <div className="wrap">
         <img src="/assets/logo-blanco.webp" alt="English Time" width={200} height={144} loading="lazy" />
-        <span>© 2026 English Time. Clases de inglés personalizadas 1 a 1 por Zoom, para toda Colombia.</span>
+        <span>© 2026 English Time. Clases de inglés personalizadas 1 a 1 por Zoom, desde cualquier país.</span>
       </div>
     </footer>
   );
