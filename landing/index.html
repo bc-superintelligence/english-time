@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English Time · Clases de inglés 1 a 1 por Zoom</title>
+<meta name="description" content="Imagina un día hablando inglés. Clases 1 a 1 en vivo por Zoom, en tu horario y a tu nivel. Promociones de Black Friday hasta el 28 de noviembre.">
+<meta name="theme-color" content="#0B1D45">
+<!-- Cuando la página esté publicada, cambia og:image por la URL completa (https://…/assets/piezas/portada.jpg) para que WhatsApp muestre la vista previa. -->
+<meta property="og:title" content="English Time: imagina un día hablando inglés">
+<meta property="og:description" content="Clases 1 a 1 en vivo por Zoom. Cuatro promociones de Black Friday hasta el 28 de noviembre.">
+<meta property="og:image" content="assets/piezas/portada.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1D45'/%3E%3Cpath d='M10 38a22 22 0 0 1 44 0' fill='none' stroke='%23D4111F' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M32 40 24 27' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M32 40 44 24' stroke='%23D4111F' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='40' r='4' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+  // Antes de pintar: activa las animaciones solo si la persona no pidió reducir el movimiento.
+  document.documentElement.classList.add('js');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');
+</script>
+<style>
+@font-face { font-family: 'Bodoni Moda'; src: url(assets/fonts/bodoni-moda.woff2) format('woff2'); font-weight: 400 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bodoni Moda'; src: url(assets/fonts/bodoni-moda-italic.woff2) format('woff2'); font-weight: 400 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Hanken Grotesk'; src: url(assets/fonts/hanken-grotesk.woff2) format('woff2'); font-weight: 400 800; font-display: swap; }
+
+:root {
+  --azul: #124296;
+  --noche: #0B1D45;
+  --rojo: #D4111F;
+  --rojo-hover: #B50E1A;
+  --papel: #F3F6FB;
+  --hielo: #DCE7F7;
+  --tinta: #0E1A33;
+  --gris: #33415F;      /* texto secundario: 9:1 sobre papel */
+  --linea: #CBD5E6;
+  --ancho: 1160px;
+  --serif: 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
+  --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --suave: cubic-bezier(.2,.8,.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--papel); color: var(--tinta);
+  font-family: var(--sans); font-size: 18px; font-weight: 450; line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+section[id] { scroll-margin-top: 72px; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--rojo); outline-offset: 3px; border-radius: 6px; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.wrap { width: min(var(--ancho), 100% - 32px); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; margin: 0; letter-spacing: -.012em; text-wrap: balance; }
+/* Bodoni tiene trazos finísimos en tamaño grande; se usa su corte de texto (opsz bajo), que los engruesa. */
+h2 { font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.5rem); line-height: 1.04; font-optical-sizing: none; font-variation-settings: 'opsz' 24; }
+h3 { font-size: 1.6rem; line-height: 1.15; font-weight: 700; font-optical-sizing: none; font-variation-settings: 'opsz' 11; letter-spacing: -.005em; }
+p { margin: 0; text-wrap: pretty; }
+i[lang="en"] { font-family: var(--serif); font-style: italic; font-weight: 600; font-optical-sizing: none; font-variation-settings: 'opsz' 11; font-size: 1.08em; }
+
+/* ---------- botones ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+  font: 700 1.0625rem/1 var(--sans); text-decoration: none; letter-spacing: .005em;
+  padding: 1.05em 1.5em; border-radius: 999px; border: 0; cursor: pointer;
+  transition: background-color .15s ease, transform .25s var(--suave), box-shadow .25s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn svg { width: 1.35em; height: 1.35em; flex: none; }
+.btn-rojo { background: var(--rojo); color: #fff; box-shadow: 0 12px 26px -14px rgba(212,17,31,.9); }
+.btn-rojo:hover { background: var(--rojo-hover); box-shadow: 0 16px 30px -14px rgba(212,17,31,.95); }
+.btn-noche { background: var(--noche); color: #fff; }
+.btn-noche:hover { background: var(--azul); }
+.btn-borde { color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.5); padding: .8em 1.15em; font-size: .9375rem; }
+.btn-borde:hover { box-shadow: inset 0 0 0 2px #fff; }
+.btn-chico { padding: .85em 1.2em; font-size: .9375rem; }
+/* Destello que recorre los botones principales cada pocos segundos. */
+.anim .btn-brillo::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%);
+  transform: translateX(-130%); animation: brillo 5.5s ease-in-out 2.4s infinite;
+}
+@keyframes brillo { 0%, 72% { transform: translateX(-130%); } 92%, 100% { transform: translateX(130%); } }
+
+/* ---------- entradas al hacer scroll ---------- */
+/* Titulares: cada palabra sube desde una máscara. */
+.revelar .w { display: inline-block; overflow: hidden; vertical-align: top; padding: .06em 0 .14em; margin: -.06em 0 -.14em; }
+.revelar .w > span { display: inline-block; }
+.anim .revelar .w > span { transform: translateY(135%); transition: transform 1s var(--suave); transition-delay: calc(var(--i) * 65ms + var(--d, 0s)); }
+.anim .revelar.visto .w > span { transform: none; }
+.anim .aparece { opacity: 0; transform: translateY(18px); transition: opacity .8s ease var(--d, 0s), transform .9s var(--suave) var(--d, 0s); }
+.anim .aparece.visto { opacity: 1; transform: none; }
+
+/* ---------- héroe ---------- */
+.hero { background: var(--noche); color: #fff; overflow: hidden; position: relative; font-weight: 400; }
+.hero::before {
+  content: ''; position: absolute; top: -12%; right: -14%; width: 72vw; height: 72vw; max-width: 980px; max-height: 980px;
+  background: radial-gradient(closest-side, rgba(212,17,31,.30), rgba(212,17,31,.08) 55%, transparent); pointer-events: none;
+}
+.anim .hero::before { animation: respira 7s ease-in-out infinite alternate; }
+@keyframes respira { from { opacity: .55; transform: scale(.94); } to { opacity: 1; transform: scale(1.06); } }
+.hero > .wrap { position: relative; z-index: 1; }
+.barra { display: flex; align-items: center; justify-content: space-between; padding-block: 22px; }
+.barra img { height: 62px; width: auto; }
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center;
+  gap: 32px; padding-block: 32px 48px;
+}
+.campana { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; font-weight: 600; }
+.campana .pill { display: inline-flex; align-items: center; gap: .55em; background: var(--rojo); padding: .4em .95em .45em .8em; border-radius: 999px; font-size: .9375rem; }
+.campana .pill::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+.anim .campana .pill::before { animation: latido 1.6s ease-in-out infinite; }
+@keyframes latido { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.7); } 60% { box-shadow: 0 0 0 7px rgba(255,255,255,0); } }
+.campana span:last-child { color: #D5DEF0; font-size: .9375rem; }
+.hero h1 {
+  font-weight: 600; font-size: clamp(3.3rem, 1.6rem + 6.2vw, 7rem); line-height: .94; letter-spacing: -.02em;
+  font-optical-sizing: none; font-variation-settings: 'opsz' 36;
+  margin-top: 26px; max-width: 9em;
+}
+.hero .lead { font-size: clamp(1.15rem, 1rem + .5vw, 1.4rem); line-height: 1.5; max-width: 30em; margin-top: 26px; color: #E1E8F5; }
+.hero .acciones { display: flex; flex-direction: column; align-items: flex-start; gap: 26px; margin-top: 34px; }
+
+/* cuenta regresiva */
+.cuenta-tit { font-size: .9375rem; font-weight: 600; color: #C3D0E8; }
+.cajas { display: flex; gap: 8px; margin-top: 10px; }
+.caja {
+  min-width: 66px; padding: 10px 8px 8px; border-radius: 14px; text-align: center;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14);
+}
+.caja b { display: block; font: 700 1.75rem/1 var(--sans); font-variant-numeric: tabular-nums; letter-spacing: -.01em; color: #fff; }
+.caja small { display: block; margin-top: 5px; font-size: .75rem; font-weight: 600; color: #C3D0E8; }
+.caja:last-child b { color: #FF6B75; }
+.caja b.tic { animation: tic .45s var(--suave); }
+@keyframes tic { from { transform: translateY(-40%); opacity: .2; } to { transform: none; opacity: 1; } }
+
+.bajar {
+  display: inline-flex; align-items: center; gap: 12px; min-height: 48px; margin: 0 0 28px; text-decoration: none;
+  font-weight: 600; color: #E1E8F5;
+}
+.bajar svg { width: 34px; height: 34px; flex: none; }
+.bajar:hover { color: #fff; }
+
+/* el reloj del logo */
+.medidor { width: 100%; max-width: 520px; justify-self: end; color: #fff; margin-right: -40px; overflow: visible; }
+.medidor .aguja { transform-box: view-box; transform-origin: 300px 320px; }
+.anim .medidor .aguja-a { animation: barrido-a 1.4s var(--suave) .3s both; }
+.anim .medidor .aguja-b { animation: barrido-b 1.7s var(--suave) .3s both; }
+.anim .medidor .ondas path { animation: onda 2.8s ease-in-out infinite both; }
+.anim .medidor .ondas path:nth-child(5) { animation-delay: 1.5s; }
+.anim .medidor .ondas path:nth-child(4) { animation-delay: 1.65s; }
+.anim .medidor .ondas path:nth-child(3) { animation-delay: 1.8s; }
+.anim .medidor .ondas path:nth-child(2) { animation-delay: 1.95s; }
+.anim .medidor .ondas path:nth-child(1) { animation-delay: 2.1s; }
+@keyframes barrido-a { from { transform: rotate(-70deg); } to { transform: rotate(0); } }
+@keyframes barrido-b { from { transform: rotate(-150deg); } to { transform: rotate(0); } }
+@keyframes onda { 0% { opacity: 0; } 35% { opacity: 1; } 70%, 100% { opacity: .25; } }
+
+/* cinta de promociones */
+.cinta { display: block; position: relative; z-index: 1; background: var(--rojo); color: #fff; text-decoration: none; overflow: hidden; }
+.cinta-pista { display: flex; width: max-content; }
+.anim .cinta-pista { animation: deslizar 46s linear infinite; }
+.cinta:hover .cinta-pista, .cinta:focus-visible .cinta-pista { animation-play-state: paused; }
+.ci { display: inline-flex; align-items: center; gap: 24px; padding: 16px 24px 16px 0; font-weight: 700; font-size: 1.0625rem; white-space: nowrap; }
+.ci b { font-family: var(--serif); font-weight: 700; font-optical-sizing: none; font-variation-settings: 'opsz' 16; font-size: 1.2em; }
+.ci svg { width: 30px; height: 30px; flex: none; }
+@keyframes deslizar { to { transform: translateX(-50%); } }
+
+/* ---------- barra fija de WhatsApp ---------- */
+.fija {
+  position: fixed; left: 0; right: 0; z-index: 40; color: #fff;
+  background: rgba(11,29,69,.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: transform .5s var(--suave); visibility: hidden;
+}
+.fija.visible { transform: none; visibility: visible; }
+.fija-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.fija img { height: 40px; width: auto; }
+.fija-cuenta { display: flex; align-items: center; gap: 10px; font-size: .9375rem; color: #D5DEF0; }
+.fija-cuenta .pill { background: var(--rojo); color: #fff; font-weight: 700; font-size: .8125rem; padding: .35em .75em; border-radius: 999px; }
+.fija-cuenta b { color: #fff; font-variant-numeric: tabular-nums; }
+.fija .btn { padding: .85em 1.25em; font-size: 1rem; white-space: nowrap; flex: none; }
+
+/* ---------- un día en inglés ---------- */
+/* El fondo de esta sección cambia con la hora de cada escena: mañana, mediodía, tarde, atardecer y noche. */
+.dia {
+  --d-fondo: var(--papel); --d-texto: var(--tinta); --d-suave: var(--gris); --d-linea: rgba(14,26,51,.14);
+  background: var(--d-fondo); color: var(--d-texto);
+  transition: background-color .9s ease, color .9s ease;
+}
+.dia[data-momento="mediodia"] { --d-fondo: #fff; }
+.dia[data-momento="tarde"] { --d-fondo: var(--hielo); --d-suave: #2B3A5C; }
+.dia[data-momento="atardecer"] { --d-fondo: var(--azul); --d-texto: #fff; --d-suave: #E1E8F5; --d-linea: rgba(255,255,255,.22); }
+.dia[data-momento="noche"], .dia[data-momento="ahora"] { --d-fondo: var(--noche); --d-texto: #fff; --d-suave: #D5DEF0; --d-linea: rgba(255,255,255,.18); }
+
+.dia-mini { display: none; }
+.dia-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 64px; }
+.dia-reloj { position: sticky; top: calc(50vh - 190px); align-self: start; height: 380px; display: grid; place-items: center; }
+.reloj { width: 100%; max-width: 380px; height: auto; color: var(--d-texto); transition: color .9s ease; overflow: visible; }
+.mano { transform-box: view-box; transform-origin: 200px 200px; transition: transform 1.3s cubic-bezier(.45,0,.2,1); }
+
+.escenas { list-style: none; margin: 0; padding: 0; }
+.escena { min-height: 88vh; display: grid; align-content: center; gap: 18px; padding-block: 72px; border-bottom: 1px solid var(--d-linea); }
+.escena:last-child { border-bottom: 0; }
+.escena .hora-grande {
+  color: var(--d-texto); max-width: none;
+  font-family: var(--serif); font-weight: 600; font-size: clamp(4.6rem, 3rem + 6vw, 8.6rem); line-height: .9; letter-spacing: -.03em;
+  font-optical-sizing: none; font-variation-settings: 'opsz' 28; font-variant-numeric: lining-nums;
+}
+.hora-grande small { font-size: .3em; letter-spacing: 0; font-weight: 700; margin-left: .15em; }
+.escena h3 { font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.4rem); line-height: 1.1; max-width: 16em; }
+.escena h3 i[lang="en"] { font-size: 1em; font-weight: 700; }
+.escena p { color: var(--d-suave); font-size: 1.1875rem; line-height: 1.6; max-width: 32em; transition: color .9s ease; }
+.escena .gana {
+  color: var(--d-texto); font-weight: 700; font-size: 1.0625rem; line-height: 1.45;
+  border-left: 3px solid var(--rojo); padding: 2px 0 2px 16px; margin-top: 6px; max-width: 30em;
+}
+.escena.ahora .previa { font-weight: 600; font-size: 1.0625rem; color: var(--d-suave); margin-bottom: -6px; }
+.escena.ahora h3 { font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.5rem); font-weight: 600; font-variation-settings: 'opsz' 24; }
+.escena.ahora .btn { justify-self: start; margin-top: 10px; }
+.anim .escena > * { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .9s var(--suave), color .9s ease; }
+.anim .escena.visto > * { opacity: 1; transform: none; }
+.anim .escena > :nth-child(2) { transition-delay: .1s; }
+.anim .escena > :nth-child(3) { transition-delay: .2s; }
+.anim .escena > :nth-child(4) { transition-delay: .3s; }
+.anim .escena > :nth-child(5) { transition-delay: .4s; }
+
+/* ---------- por qué no ha funcionado ---------- */
+.seccion { padding-block: clamp(72px, 9vw, 120px); }
+.blanco { background: #fff; }
+.encabezado { display: grid; gap: 18px; max-width: 40em; }
+.encabezado p { color: var(--gris); font-size: 1.1875rem; }
+.metodo-cab { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: end; }
+.metodo-cab .mascota { width: 200px; height: auto; mix-blend-mode: multiply; }
+.anim .metodo-cab .mascota { transform-origin: 50% 100%; animation: saluda 3.2s ease-in-out infinite; }
+@keyframes saluda { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-3deg) translateY(-4px); } }
+
+.versus { margin-top: 48px; }
+.versus-fila { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; padding-block: 20px; border-bottom: 1px solid var(--linea); }
+.versus-cab { padding-block: 0 14px; border-bottom: 2px solid var(--noche); font-weight: 700; font-size: 1rem; }
+.versus-cab span:first-child { color: var(--gris); }
+.versus-cab span:last-child { color: var(--rojo); }
+.versus .antes, .versus .despues { display: flex; gap: 14px; align-items: flex-start; }
+.versus .antes { color: var(--gris); }
+.versus .antes span {
+  background: linear-gradient(var(--rojo), var(--rojo)) no-repeat 0 62% / 100% 2px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.versus .despues { font-weight: 700; color: var(--tinta); }
+.versus svg { width: 24px; height: 24px; flex: none; margin-top: 2px; }
+/* El método viejo se tacha y aparece el de English Time. */
+.anim .versus-fila .antes span { background-size: 0% 2px; transition: background-size .7s ease .25s; }
+.anim .versus-fila.visto .antes span { background-size: 100% 2px; }
+.anim .versus-fila .despues { opacity: 0; transform: translateX(-14px); transition: opacity .6s ease .75s, transform .7s var(--suave) .75s; }
+.anim .versus-fila.visto .despues { opacity: 1; transform: none; }
+.anim .versus-fila .despues svg { transform: scale(0); transition: transform .5s cubic-bezier(.3,1.7,.5,1) .85s; }
+.anim .versus-fila.visto .despues svg { transform: none; }
+
+.pasos-titulo { margin-top: 88px; font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.6rem); font-weight: 600; font-variation-settings: 'opsz' 24; }
+.pasos { list-style: none; counter-reset: paso; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 40px; margin: 32px 0 0; padding: 0; }
+.pasos li { counter-increment: paso; padding-top: 18px; background: linear-gradient(var(--rojo), var(--rojo)) no-repeat 0 0 / 100% 2px; }
+.pasos li::before {
+  content: counter(paso); display: block; margin-bottom: 12px; color: var(--rojo);
+  font: 600 3.2rem/1 var(--serif); font-optical-sizing: none; font-variation-settings: 'opsz' 24;
+}
+.pasos b { display: block; font-size: 1.1875rem; line-height: 1.35; }
+.pasos span { display: block; color: var(--gris); margin-top: 6px; }
+.anim .pasos li { background-size: 0% 2px; opacity: 0; transform: translateY(20px); transition: background-size .8s ease, opacity .7s ease, transform .8s var(--suave); }
+.anim .pasos.visto li { background-size: 100% 2px; opacity: 1; transform: none; }
+.anim .pasos li:nth-child(2) { transition-delay: .18s; }
+.anim .pasos li:nth-child(3) { transition-delay: .36s; }
+
+/* ---------- promociones: mazo de tarjetas ---------- */
+.deck { margin-top: 44px; }
+.deck-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.deck-tab { display: block; text-align: left; background: none; border: 0; padding: 0 0 6px; cursor: pointer; color: var(--gris); }
+.deck-tab .progreso { display: block; height: 4px; border-radius: 4px; background: rgba(14,26,51,.12); overflow: hidden; margin-bottom: 12px; }
+.deck-tab .progreso i { display: block; height: 100%; background: var(--rojo); transform-origin: left; transform: scaleX(0); }
+.deck-tab[aria-selected="true"] .progreso i { transform: scaleX(1); }
+.deck.auto .deck-tab[aria-selected="true"] .progreso i { transform: scaleX(0); animation: llenar 6.5s linear forwards; }
+.deck.auto.pausa .deck-tab[aria-selected="true"] .progreso i { animation-play-state: paused; }
+@keyframes llenar { to { transform: scaleX(1); } }
+.deck-tab b { display: block; font-size: 1.0625rem; font-weight: 700; color: var(--gris); transition: color .3s ease; }
+.deck-tab .tab-precio { display: block; font-size: .9375rem; }
+.deck-tab[aria-selected="true"] b { color: var(--tinta); }
+.deck-tab:hover b { color: var(--tinta); }
+
+.deck-cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); gap: 72px; align-items: center; margin-top: 40px; }
+.deck-mesa { position: relative; width: min(100%, 440px); aspect-ratio: 4 / 5; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.carta {
+  position: absolute; inset: 0; margin: 0; border-radius: 22px; overflow: hidden; background: var(--fondo);
+  transform-origin: 50% 100%; will-change: transform;
+  box-shadow: 0 2px 0 rgba(14,26,51,.05), 0 40px 70px -40px rgba(11,29,69,.65);
+  transition: transform .75s var(--suave), opacity .5s ease;
+}
+.carta iframe { display: block; width: 100%; height: 100%; border: 0; pointer-events: none; }
+.carta[data-o="0"] { z-index: 4; transform: none; cursor: grab; }
+.carta[data-o="1"] { z-index: 3; transform: translate(9%, 1.5%) rotate(4deg) scale(.92); cursor: pointer; }
+.carta[data-o="2"] { z-index: 2; transform: translate(17%, 3%) rotate(8deg) scale(.85); cursor: pointer; }
+.carta[data-o="3"] { z-index: 1; transform: translate(24%, 4%) rotate(12deg) scale(.78); opacity: 0; }
+.carta.sale { z-index: 5 !important; opacity: 1 !important; transform: translate(-118%, 6%) rotate(-14deg) !important; transition-duration: .45s; }
+/* Al entrar en pantalla, las cartas se reparten una por una. */
+.anim .deck:not(.visto) .carta { opacity: 0; transform: translateY(70px) rotate(-8deg) scale(.9); }
+.deck.repartir .carta:nth-child(2) { transition-delay: .12s; }
+.deck.repartir .carta:nth-child(3) { transition-delay: .24s; }
+.deck.repartir .carta:nth-child(4) { transition-delay: .36s; }
+
+.deck-controles { display: flex; align-items: center; gap: 14px; margin-top: 30px; }
+.deck-flecha {
+  width: 52px; height: 52px; border-radius: 50%; border: 0; display: grid; place-items: center; cursor: pointer;
+  background: #fff; color: var(--noche); box-shadow: inset 0 0 0 1.5px var(--linea); transition: background-color .2s, color .2s, transform .2s;
+}
+.deck-flecha:hover { background: var(--noche); color: #fff; transform: scale(1.06); }
+.deck-flecha svg { width: 22px; height: 22px; }
+.deck-num { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 3.2em; text-align: center; }
+.deck-pista { display: none; color: var(--gris); font-size: .9375rem; font-weight: 600; }
+
+.deck-paneles { display: grid; }
+.deck-panel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(14px); transition: opacity .45s ease, transform .55s var(--suave), visibility 0s .45s; }
+.deck-panel.activo { opacity: 1; visibility: visible; transform: none; transition-delay: .12s, .12s, 0s; }
+.chip { display: inline-block; background: #FDE4E6; color: #A30C17; font-weight: 700; font-size: .9375rem; padding: .4em .85em; border-radius: 999px; }
+.deck-panel h3 { margin-top: 18px; font-size: clamp(2rem, 1.5rem + 1.6vw, 2.8rem); font-weight: 600; font-variation-settings: 'opsz' 24; line-height: 1.05; }
+.deck-panel .precio { margin-top: 14px; font-family: var(--serif); font-weight: 700; font-optical-sizing: none; font-variation-settings: 'opsz' 16; font-size: clamp(2.6rem, 2rem + 2vw, 3.6rem); line-height: 1; color: var(--rojo); letter-spacing: -.01em; }
+.deck-panel .precio small { font-family: var(--sans); font-size: 1rem; font-weight: 600; color: var(--gris); margin-left: .5em; letter-spacing: 0; }
+.deck-panel .texto { color: var(--gris); font-size: 1.1875rem; margin-top: 16px; max-width: 30em; }
+.deck-panel .btn { margin-top: 26px; }
+
+.regalo {
+  margin-top: 72px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px;
+  padding: 28px 32px; border-radius: 18px; background: #fff; border: 1px solid var(--linea);
+}
+.regalo p { color: var(--gris); margin-top: 6px; }
+
+/* ---------- planes ---------- */
+.planes { margin-top: 44px; border-top: 2px solid var(--noche); }
+.plan {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 12px 36px;
+  padding: 26px 0; border-bottom: 1px solid var(--linea);
+}
+.plan .detalle { color: var(--gris); margin-top: 4px; }
+.etiqueta { display: inline-block; margin-left: 8px; vertical-align: 1px; background: var(--rojo); color: #fff; font-weight: 700; font-size: .8125rem; line-height: 1; padding: .45em .7em; border-radius: 999px; }
+.plan .precio { text-align: right; }
+.plan .precio b { display: block; font-family: var(--serif); font-optical-sizing: none; font-variation-settings: 'opsz' 11; font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.4rem); font-weight: 700; line-height: 1.05; color: var(--noche); }
+.plan .precio span { color: var(--gris); font-size: .9375rem; }
+.nota { margin-top: 20px; color: var(--gris); font-size: .9375rem; }
+.anim .plan { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .8s var(--suave); }
+.anim .plan.visto { opacity: 1; transform: none; }
+
+/* ---------- preguntas ---------- */
+.preguntas { margin-top: 36px; border-top: 2px solid var(--noche); max-width: 52em; }
+.preguntas details { border-bottom: 1px solid var(--linea); }
+.preguntas summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 22px 0; font-weight: 700; font-size: 1.125rem;
+}
+.preguntas summary::-webkit-details-marker { display: none; }
+.preguntas summary::after { content: '+'; font-family: var(--sans); font-weight: 400; font-size: 2rem; line-height: 1; color: var(--rojo); transition: transform .3s var(--suave); }
+.preguntas details[open] summary::after { transform: rotate(45deg); }
+.preguntas details p { padding: 0 0 24px; color: var(--gris); max-width: 40em; }
+
+/* ---------- cierre ---------- */
+.cierre { position: relative; overflow: hidden; background: var(--noche); color: #fff; font-weight: 400; }
+.cierre .medidor { position: absolute; right: -40px; bottom: -150px; width: 600px; max-width: none; margin: 0; opacity: .55; pointer-events: none; }
+.anim .cierre:not(.visto) .medidor .aguja, .anim .cierre:not(.visto) .medidor .ondas path { animation-play-state: paused; }
+.cierre .wrap { position: relative; z-index: 1; display: grid; gap: 26px; justify-items: start; }
+.cierre h2 { max-width: 13em; font-weight: 600; font-variation-settings: 'opsz' 36; font-size: clamp(2.6rem, 1.6rem + 3.6vw, 4.6rem); line-height: 1.02; }
+.cierre p { color: #D5DEF0; font-size: 1.1875rem; }
+.cierre .numero { font-size: 1rem; color: #C3D0E8; }
+.cierre .numero a { display: inline-block; padding-block: 12px; color: #fff; font-weight: 700; text-decoration: none; }
+footer { background: var(--noche); color: #C3D0E8; border-top: 1px solid rgba(255,255,255,.12); font-weight: 400; }
+footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-block: 28px; font-size: .9375rem; }
+footer img { height: 44px; width: auto; }
+
+/* ---------- escritorio / móvil ---------- */
+@media (min-width: 701px) {
+  .fija { top: 0; transform: translateY(-110%); box-shadow: 0 12px 30px -18px rgba(0,0,0,.7); }
+  .solo-movil { display: none; }
+}
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; padding-block: 16px 40px; }
+  .medidor { position: absolute; z-index: 0; width: 260px; right: -70px; top: -150px; opacity: .55; margin: 0; }
+  .texto-hero { position: relative; z-index: 1; }
+  .dia-grid { grid-template-columns: 1fr; gap: 0; }
+  .dia-reloj { display: none; }
+  .dia-mini {
+    display: flex; position: sticky; top: 0; z-index: 6; align-items: center; gap: 12px; padding: 10px 16px;
+    background: var(--d-fondo); border-bottom: 1px solid var(--d-linea); transition: background-color .9s ease;
+  }
+  .reloj-mini { width: 40px; height: 40px; flex: none; color: var(--d-texto); transition: color .9s ease; }
+  .mini-hora { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 6.2em; }
+  .mini-pasos { display: flex; gap: 4px; flex: 1; }
+  .mini-pasos i { flex: 1; height: 4px; border-radius: 4px; background: var(--d-linea); transition: background-color .4s ease; }
+  .mini-pasos i.on { background: var(--rojo); }
+  .escena { min-height: 0; padding-block: 56px; }
+  .metodo-cab .mascota { width: 130px; }
+  .deck-cuerpo { grid-template-columns: 1fr; gap: 36px; margin-top: 32px; }
+}
+@media (max-width: 700px) {
+  body { font-size: 17px; }
+  .barra img { height: 50px; }
+  .barra .btn-borde { display: none; }
+  .hero .btn-rojo { width: 100%; }
+  .hero .acciones { align-items: stretch; }
+  .caja { flex: 1; min-width: 0; }
+  .ci { font-size: 1rem; padding-block: 13px; }
+  .fija { bottom: 0; transform: translateY(110%); padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -12px 30px -18px rgba(0,0,0,.7); }
+  .fija img, .solo-escritorio { display: none; }
+  .fija-in { gap: 10px; padding-block: 10px; }
+  .fija-cuenta { flex-direction: column; align-items: flex-start; gap: 2px; font-size: .8125rem; line-height: 1.25; }
+  .fija-cuenta .pill { display: none; }
+  .fija-cuenta b { font-size: 1rem; }
+  .escena p { font-size: 1.125rem; }
+  .metodo-cab { grid-template-columns: 1fr; gap: 24px; }
+  .metodo-cab .mascota { grid-row: 1; width: 110px; }
+  .versus-cab { display: none; }
+  .versus-fila { grid-template-columns: 1fr; gap: 10px; }
+  .pasos { grid-template-columns: 1fr; gap: 24px; }
+  .pasos li { display: grid; grid-template-columns: 52px minmax(0, 1fr); padding-top: 16px; }
+  .pasos li::before { grid-row: span 2; margin: 0; font-size: 2.6rem; }
+  .deck-tabs { gap: 8px; }
+  .deck-tab b { font-size: .875rem; }
+  .deck-tab .tab-precio { display: none; }
+  .deck-mesa { width: 76%; }
+  .deck-controles { margin-top: 24px; }
+  .deck-pista { display: block; margin-left: auto; }
+  .deck-flecha { width: 48px; height: 48px; }
+  .regalo { padding: 24px 20px; margin-top: 56px; }
+  .plan { grid-template-columns: minmax(0, 1fr) auto; }
+  .plan .btn { grid-column: 1 / -1; justify-self: start; }
+  .etiqueta { margin: 8px 0 0; display: table; }
+  .cierre .medidor { width: 340px; right: -150px; top: -70px; bottom: auto; opacity: .3; }
+}
+
+/* Movimiento reducido: todo queda quieto y visible. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .dia, .reloj, .escena p, .mano, .carta, .deck-panel, .fija { transition: none !important; }
+}
+/* Preguntas: se abren con un deslizamiento suave (en navegadores que lo soportan). */
+@media (prefers-reduced-motion: no-preference) {
+  :root { interpolate-size: allow-keywords; }
+  .preguntas details::details-content { block-size: 0; overflow: clip; transition: block-size .35s ease, content-visibility .35s allow-discrete; }
+  .preguntas details[open]::details-content { block-size: auto; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24">
+    <path d="M12 2.2a9.8 9.8 0 0 0-8.5 14.7L2.2 21.8l5-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M8.7 7.2c.25-.55.5-.56.74-.57h.63c.21 0 .5.05.73.55l.95 2.2c.08.2.1.43-.05.63l-.7.86c-.16.19-.2.4-.07.62.5.86 1.18 1.66 1.98 2.3.64.5 1.33.86 2.03 1.15.24.1.47.03.62-.14l.86-1.04c.18-.22.42-.27.68-.17l2.05 1c.25.12.4.27.4.52 0 .55-.24 1.45-.96 1.95-.7.5-1.85.75-3.56.04-2.03-.84-3.66-2.43-4.66-4.07-.7-1.15-1.17-2.42-1.1-3.43.05-.9.4-1.6.83-2.2z" fill="currentColor"/>
+  </symbol>
+  <symbol id="no" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
+    <path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="si" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="11.5" fill="#D4111F"/>
+    <path d="M7.2 12.4l3.2 3.1 6.4-6.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="reloj-logo" viewBox="0 0 64 64">
+    <path d="M8 38a24 24 0 0 1 48 0" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <path d="M32 40 23 27" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M32 40 45 23" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+    <circle cx="32" cy="40" r="4.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="izq" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="der" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- Barra fija: aparece cuando el botón del héroe sale de la pantalla (arriba en escritorio, abajo en el celular). -->
+<div class="fija" id="fija" aria-hidden="true" inert>
+  <div class="wrap fija-in">
+    <img src="assets/logo-claro-web.png" alt="" width="480" height="345">
+    <p class="fija-cuenta"><span class="pill">Black Friday</span><span><span class="solo-escritorio">Las promociones terminan en</span><span class="solo-movil">Promos de Black Friday</span></span><b data-cuenta-corta>22 días</b></p>
+    <a class="btn btn-rojo btn-brillo" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20vi%20las%20promociones%20de%20Black%20Friday%20de%20English%20Time%20y%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span>Escribirle a Luis<span class="solo-escritorio"> por WhatsApp</span></span></a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap barra">
+    <img src="assets/logo-claro-web.png" alt="English Time: easy, fast, fun!" width="480" height="345">
+    <a class="btn btn-borde" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20vi%20la%20p%C3%A1gina%20de%20English%20Time%20y%20quiero%20informaci%C3%B3n%20sobre%20las%20clases." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div class="texto-hero">
+      <div class="campana aparece" style="--d:.1s"><span class="pill">Black Friday</span><span>Promociones hasta el 28 de noviembre</span></div>
+      <h1 class="revelar" style="--d:.25s">Imagina un día hablando inglés.</h1>
+      <p class="lead aparece" style="--d:.75s">Sin traductor, sin pena y sin quedarte callado. Baja y vívelo hora por hora: así cambia tu vida cuando por fin hablas inglés.</p>
+      <div class="acciones aparece" style="--d:.95s">
+        <a class="btn btn-rojo btn-brillo" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20vi%20la%20p%C3%A1gina%20de%20English%20Time%20y%20quiero%20informaci%C3%B3n%20sobre%20las%20clases." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Escribirle a Luis por WhatsApp</a>
+        <div class="cuenta" data-cuenta>
+          <p class="cuenta-tit">Las promociones terminan en</p>
+          <div class="cajas" role="timer" aria-label="Tiempo que falta para el cierre de las promociones">
+            <span class="caja"><b data-u="d">--</b><small>días</small></span>
+            <span class="caja"><b data-u="h">--</b><small>horas</small></span>
+            <span class="caja"><b data-u="m">--</b><small>min</small></span>
+            <span class="caja"><b data-u="s">--</b><small>seg</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <svg class="medidor" viewBox="0 0 600 600" role="img" aria-label="Reloj de English Time">
+      <g fill="none" stroke-linecap="round">
+        <path d="M55.7 231.1 A260 260 0 0 1 544.3 231.1" stroke="#D4111F" stroke-width="16"/>
+        <g class="ondas">
+          <path d="M337.3 108.3 A215 215 0 0 1 486.2 212.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".6"/>
+          <path d="M332.1 137.8 A185 185 0 0 1 460.2 227.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".5"/>
+          <path d="M326.9 167.4 A155 155 0 0 1 434.2 242.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".4"/>
+          <path d="M321.7 196.9 A125 125 0 0 1 408.3 257.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".3"/>
+          <path d="M316.5 226.4 A95 95 0 0 1 382.3 272.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".22"/>
+        </g>
+        <path class="aguja aguja-a" d="M300 320 L214 197" stroke="currentColor" stroke-width="26"/>
+        <path class="aguja aguja-b" d="M300 320 L441 152" stroke="#D4111F" stroke-width="26"/>
+      </g>
+      <circle cx="300" cy="320" r="24" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <a class="bajar aparece" style="--d:1.2s" href="#dia">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="16" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/><path d="M11 14.5l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Tu día empieza a las 7:00 a.m.
+    </a>
+  </div>
+
+  <a class="cinta" href="#promociones" aria-label="Ver las cuatro promociones de Black Friday">
+    <span class="cinta-pista" aria-hidden="true">
+      <span class="ci">Black Friday hasta el 28 de noviembre<svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Bootcamp Navideño <b>$49.000</b><svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Paga un mes, estudia dos<svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Plan 90: <b>15% menos</b><svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Congela tu precio <b>2026</b><svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Black Friday hasta el 28 de noviembre<svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Bootcamp Navideño <b>$49.000</b><svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Paga un mes, estudia dos<svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Plan 90: <b>15% menos</b><svg><use href="#reloj-logo"/></svg></span>
+      <span class="ci">Congela tu precio <b>2026</b><svg><use href="#reloj-logo"/></svg></span>
+    </span>
+  </a>
+</header>
+
+<main>
+  <!-- La historia: un día cualquiera de tu vida, ya hablando inglés. -->
+  <section class="dia" id="dia" data-momento="manana" aria-labelledby="t-dia">
+    <h2 id="t-dia" class="oculto">Un día hablando inglés, hora por hora</h2>
+    <div class="dia-mini" aria-hidden="true">
+      <svg class="reloj-mini" viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" stroke-width="22" opacity=".25"/>
+        <path d="M42.4 109 A182 182 0 0 1 357.6 109" fill="none" stroke="#D4111F" stroke-width="26" stroke-linecap="round"/>
+        <line class="mano mano-h" x1="200" y1="200" x2="200" y2="100" stroke="currentColor" stroke-width="34" stroke-linecap="round" style="transform: rotate(210deg)"/>
+        <line class="mano mano-m" x1="200" y1="200" x2="200" y2="62" stroke="#D4111F" stroke-width="24" stroke-linecap="round" style="transform: rotate(0deg)"/>
+        <circle cx="200" cy="200" r="24" fill="currentColor"/>
+      </svg>
+      <span class="mini-hora">7:00 a.m.</span>
+      <span class="mini-pasos"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span>
+    </div>
+    <div class="wrap dia-grid">
+      <div class="dia-reloj" aria-hidden="true">
+        <svg class="reloj" viewBox="0 0 400 400">
+          <circle cx="200" cy="200" r="184" fill="none" stroke="currentColor" stroke-width="3" opacity=".2"/>
+          <g stroke="currentColor" stroke-linecap="round">
+            <line x1="200" y1="36" x2="200" y2="62" stroke-width="9"/>
+            <line x1="200" y1="36" x2="200" y2="52" stroke-width="6" opacity=".55" transform="rotate(30 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="52" stroke-width="6" opacity=".55" transform="rotate(60 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="62" stroke-width="9" transform="rotate(90 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="52" stroke-width="6" opacity=".55" transform="rotate(120 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="52" stroke-width="6" opacity=".55" transform="rotate(150 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="62" stroke-width="9" transform="rotate(180 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="52" stroke-width="6" opacity=".55" transform="rotate(210 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="52" stroke-width="6" opacity=".55" transform="rotate(240 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="62" stroke-width="9" transform="rotate(270 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="52" stroke-width="6" opacity=".55" transform="rotate(300 200 200)"/>
+            <line x1="200" y1="36" x2="200" y2="52" stroke-width="6" opacity=".55" transform="rotate(330 200 200)"/>
+          </g>
+          <path d="M42.4 109 A182 182 0 0 1 357.6 109" fill="none" stroke="#D4111F" stroke-width="14" stroke-linecap="round"/>
+          <line class="mano mano-h" x1="200" y1="200" x2="200" y2="108" stroke="currentColor" stroke-width="20" stroke-linecap="round" style="transform: rotate(210deg)"/>
+          <line class="mano mano-m" x1="200" y1="200" x2="200" y2="66" stroke="#D4111F" stroke-width="13" stroke-linecap="round" style="transform: rotate(0deg)"/>
+          <circle cx="200" cy="200" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <ol class="escenas">
+        <li class="escena" data-min="420" data-momento="manana">
+          <p class="hora-grande">7:00<small>a.m.</small></p>
+          <h3>Te escribe una empresa de Toronto.</h3>
+          <p>Abres el correo con el primer café. Antes lo habrías pegado en el traductor y habrías respondido con miedo de sonar mal. Hoy lo lees de corrido y contestas en dos minutos.</p>
+          <p class="gana">Las mejores oportunidades llegan en inglés. Ahora sí te llegan a ti.</p>
+        </li>
+        <li class="escena" data-min="630" data-momento="mediodia">
+          <p class="hora-grande">10:30<small>a.m.</small></p>
+          <h3><i lang="en">«So, tell me about yourself.»</i></h3>
+          <p>La pregunta que siempre te congelaba en las entrevistas. Hoy respiras, sonríes y hablas tres minutos seguidos de tu experiencia. Al otro lado de la pantalla, alguien anota en su libreta: esta persona sí.</p>
+          <p class="gana">Con inglés compites por mejores cargos y mejores salarios.</p>
+        </li>
+        <li class="escena" data-min="900" data-momento="tarde">
+          <p class="hora-grande">3:00<small>p.m.</small></p>
+          <h3>Tu cliente está en Nueva York.</h3>
+          <p>Presentas tu propuesta, respondes sus preguntas y hasta lo haces reír. Cuelgas la videollamada y la factura sale en dólares.</p>
+          <p class="gana">Puedes trabajar para el mundo sin salir de tu casa.</p>
+        </li>
+        <li class="escena" data-min="1125" data-momento="atardecer">
+          <p class="hora-grande">6:45<small>p.m.</small></p>
+          <h3>Aterrizas en Orlando.</h3>
+          <p>En inmigración te preguntan <i lang="en">«Purpose of your visit?»</i> y respondes sin titubear. En el hotel pides lo que quieres, como lo quieres. Esta vez nadie tiene que traducir por ti.</p>
+          <p class="gana">Viajas con libertad, sin depender de nadie.</p>
+        </li>
+        <li class="escena" data-min="1290" data-momento="noche">
+          <p class="hora-grande">9:30<small>p.m.</small></p>
+          <h3>Suena esa canción.</h3>
+          <p>La que llevas años cantando a medias, inventándote la letra. Esta noche entiendes cada palabra y, por fin, sabes lo que estabas cantando.</p>
+          <p class="gana">Series, libros y música se disfrutan más en su idioma original.</p>
+        </li>
+        <li class="escena ahora" data-min="" data-momento="ahora">
+          <p class="previa" id="previa-ahora">Y ahora mismo son las</p>
+          <p class="hora-grande" id="hora-ahora">tu hora</p>
+          <h3>Es hora de hablar inglés.</h3>
+          <p>Ese día que acabas de leer no es un sueño. Es un horario, y el tuyo lo escoges tú.</p>
+          <a class="btn btn-rojo btn-brillo" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20vi%20la%20p%C3%A1gina%20de%20English%20Time%20y%20quiero%20escoger%20mi%20horario%20para%20empezar." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Escoger mi horario con Luis</a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion blanco" id="clases" aria-labelledby="t-clases">
+    <div class="wrap">
+      <div class="metodo-cab">
+        <div class="encabezado">
+          <h2 id="t-clases" class="revelar">Si ya lo intentaste y no funcionó, no es tu culpa.</h2>
+          <p class="aparece" style="--d:.3s">A casi todos nos enseñaron inglés para pasar exámenes, no para hablarlo. En English Time cada clase está hecha para que hables.</p>
+        </div>
+        <img class="mascota" src="assets/mascota.png" width="296" height="605" loading="lazy" alt="La mascota de English Time, un reloj despertador con la camiseta de la academia.">
+      </div>
+
+      <div class="versus" role="table" aria-label="Lo de siempre frente a English Time">
+        <div class="versus-fila versus-cab" role="row"><span role="columnheader">Lo de siempre</span><span role="columnheader">En English Time</span></div>
+        <div class="versus-fila" role="row">
+          <p class="antes" role="cell"><svg aria-hidden="true"><use href="#no"/></svg><span>Grupos de 20, donde hablas dos minutos por clase.</span></p>
+          <p class="despues" role="cell"><svg aria-hidden="true"><use href="#si"/></svg>Clases 1 a 1: la clase entera es para ti.</p>
+        </div>
+        <div class="versus-fila" role="row">
+          <p class="antes" role="cell"><svg aria-hidden="true"><use href="#no"/></svg><span>Gramática en el tablero y cero conversación.</span></p>
+          <p class="despues" role="cell"><svg aria-hidden="true"><use href="#si"/></svg>Hablas desde el primer día, a tu nivel.</p>
+        </div>
+        <div class="versus-fila" role="row">
+          <p class="antes" role="cell"><svg aria-hidden="true"><use href="#no"/></svg><span>Horarios fijos y trancones para llegar a la academia.</span></p>
+          <p class="despues" role="cell"><svg aria-hidden="true"><use href="#si"/></svg>En vivo por Zoom, desde tu casa y en el horario que tú escojas.</p>
+        </div>
+        <div class="versus-fila" role="row">
+          <p class="antes" role="cell"><svg aria-hidden="true"><use href="#no"/></svg><span>Apps que te felicitan por la racha, pero nunca te hacen hablar.</span></p>
+          <p class="despues" role="cell"><svg aria-hidden="true"><use href="#si"/></svg>Una persona real que te escucha, te corrige y te anima.</p>
+        </div>
+        <div class="versus-fila" role="row">
+          <p class="antes" role="cell"><svg aria-hidden="true"><use href="#no"/></svg><span>Pena de equivocarte delante de todos.</span></p>
+          <p class="despues" role="cell"><svg aria-hidden="true"><use href="#si"/></svg>Solo tú y tu profe. Equivocarte es parte de aprender.</p>
+        </div>
+      </div>
+
+      <h3 class="pasos-titulo">Empezar es así de simple</h3>
+      <ol class="pasos">
+        <li><b>Le escribes a Luis por WhatsApp.</b><span>Le cuentas para qué quieres el inglés y cuánto tiempo tienes.</span></li>
+        <li><b>Escoges tu plan y tu horario.</b><span>Un plan mensual, el Plan 90 o una promoción de Black Friday.</span></li>
+        <li><b>Hablas en tu primera clase.</b><span>Desde el primer día, a tu nivel y sin pena.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion" id="promociones" aria-labelledby="t-promos">
+    <div class="wrap">
+      <div class="encabezado">
+        <h2 id="t-promos" class="revelar">Empieza antes del 28 de noviembre y paga menos.</h2>
+        <p class="aparece" style="--d:.3s">Cuatro promociones de Black Friday, cada una para un momento distinto. Pasa las tarjetas, escoge la tuya y escríbele a Luis con un toque: el mensaje ya va escrito.</p>
+      </div>
+
+      <div class="deck" id="deck">
+        <div class="deck-tabs" role="tablist" aria-label="Promociones de Black Friday">
+          <button class="deck-tab" role="tab" id="tab-0" aria-controls="panel-0" aria-selected="true"><span class="progreso"><i></i></span><b>Bootcamp</b><span class="tab-precio">$49.000</span></button>
+          <button class="deck-tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="false" tabindex="-1"><span class="progreso"><i></i></span><b>2×1</b><span class="tab-precio">2 meses por 1</span></button>
+          <button class="deck-tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1"><span class="progreso"><i></i></span><b>Plan 90</b><span class="tab-precio">15% menos</span></button>
+          <button class="deck-tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1"><span class="progreso"><i></i></span><b>Congela</b><span class="tab-precio">Precio 2026</span></button>
+        </div>
+
+        <div class="deck-cuerpo">
+          <div class="deck-zona">
+            <div class="deck-mesa">
+              <figure class="carta" data-o="0" style="--fondo:#D4111F"><iframe src="piezas/piezas.html?p=bootcamp" title="Publicidad: Bootcamp Navideño" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe></figure>
+              <figure class="carta" data-o="1" style="--fondo:#F3F6FB"><iframe src="piezas/piezas.html?p=dosporuno" title="Publicidad: Paga un mes, estudia dos" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe></figure>
+              <figure class="carta" data-o="2" style="--fondo:#0B1D45"><iframe src="piezas/piezas.html?p=plan90" title="Publicidad: Plan 90" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe></figure>
+              <figure class="carta" data-o="3" style="--fondo:#DCE7F7"><iframe src="piezas/piezas.html?p=congela" title="Publicidad: Congela tu precio" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe></figure>
+            </div>
+            <div class="deck-controles">
+              <button class="deck-flecha" data-dir="-1" aria-label="Promoción anterior"><svg aria-hidden="true"><use href="#izq"/></svg></button>
+              <span class="deck-num" aria-hidden="true">1 / 4</span>
+              <button class="deck-flecha" data-dir="1" aria-label="Siguiente promoción"><svg aria-hidden="true"><use href="#der"/></svg></button>
+              <span class="deck-pista">Desliza las tarjetas</span>
+            </div>
+          </div>
+
+          <div class="deck-paneles">
+            <div class="deck-panel activo" role="tabpanel" id="panel-0" aria-labelledby="tab-0">
+              <span class="chip">Cupos limitados</span>
+              <h3>Bootcamp Navideño</h3>
+              <p class="precio">$49.000<small>los 7 días</small></p>
+              <p class="texto">7 días de inglés para viajar: aeropuerto, hotel y entrevista. Clases en vivo de 45 minutos en diciembre.</p>
+              <a class="btn btn-rojo btn-brillo" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20quiero%20separar%20mi%20cupo%20en%20el%20Bootcamp%20Navide%C3%B1o%20de%20%2449.000." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Separar mi cupo</a>
+            </div>
+            <div class="deck-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" aria-hidden="true" inert>
+              <span class="chip">Solo 5 cupos</span>
+              <h3>Paga un mes, estudia dos</h3>
+              <p class="precio">$480.000<small>por dos meses</small></p>
+              <p class="texto">Pack de 8 clases al mes, 2 veces por semana. Pagas un mes y el segundo es gratis.</p>
+              <a class="btn btn-rojo btn-brillo" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20quiero%20la%20promo%20Paga%20un%20mes%2C%20estudia%20dos.%20%C2%BFTodav%C3%ADa%20hay%20cupos%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Pedir uno de los 5 cupos</a>
+            </div>
+            <div class="deck-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" aria-hidden="true" inert>
+              <span class="chip">Ahorras hasta $390.000</span>
+              <h3>Plan 90, tres meses con 15% menos</h3>
+              <p class="precio">$1.220.000<small>desde, por 3 meses</small></p>
+              <p class="texto">Tres meses de clases 1 a 1 en un solo pago: 2, 3 o 4 veces por semana.</p>
+              <a class="btn btn-rojo btn-brillo" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20quiero%20el%20Plan%2090%3A%20tres%20meses%20con%2015%25%20de%20descuento." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Quiero el Plan 90</a>
+            </div>
+            <div class="deck-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" aria-hidden="true" inert>
+              <span class="chip">Primer mes en dos cuotas</span>
+              <h3>Congela tu precio 2026</h3>
+              <p class="precio">$480.000<small>al mes, todo 2027</small></p>
+              <p class="texto">Inscríbete antes del 28 de noviembre y estudia todo 2027 con la tarifa de 2026. Tu primer mes lo pagas 50% hoy y 50% en enero.</p>
+              <a class="btn btn-rojo btn-brillo" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20quiero%20congelar%20mi%20precio%202026%20para%20todo%202027." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Congelar mi precio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="regalo aparece">
+        <div>
+          <h3>¿Es para regalar?</h3>
+          <p>El Bootcamp y cualquier plan se pueden regalar esta Navidad.</p>
+        </div>
+        <a class="btn btn-noche" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20quiero%20regalar%20clases%20de%20ingl%C3%A9s%20esta%20Navidad." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Regalar clases</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion blanco" id="planes" aria-labelledby="t-planes">
+    <div class="wrap">
+      <div class="encabezado">
+        <h2 id="t-planes" class="revelar">Planes mensuales</h2>
+        <p class="aparece" style="--d:.2s">Clases 1 a 1 cada mes, a precio normal. Escoges cuántas veces por semana.</p>
+      </div>
+      <div class="planes">
+        <div class="plan">
+          <div><h3>2 veces por semana</h3><p class="detalle">8 clases al mes</p></div>
+          <div class="precio"><b>$480.000</b><span>$60.000 por clase</span></div>
+          <a class="btn btn-noche btn-chico" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20quiero%20el%20plan%20mensual%20de%202%20veces%20por%20semana%20%28%24480.000%29." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Elegir</a>
+        </div>
+        <div class="plan" style="transition-delay:.1s">
+          <div><h3>3 veces por semana</h3><p class="detalle">12 clases al mes</p></div>
+          <div class="precio"><b>$700.000</b><span>$58.300 por clase</span></div>
+          <a class="btn btn-noche btn-chico" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20quiero%20el%20plan%20mensual%20de%203%20veces%20por%20semana%20%28%24700.000%29." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Elegir</a>
+        </div>
+        <div class="plan" style="transition-delay:.2s">
+          <div><h3>4 veces por semana</h3><p class="detalle">16 clases al mes<span class="etiqueta">Mejor precio por clase</span></p></div>
+          <div class="precio"><b>$850.000</b><span>$53.100 por clase</span></div>
+          <a class="btn btn-noche btn-chico" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20quiero%20el%20plan%20mensual%20de%204%20veces%20por%20semana%20%28%24850.000%29." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Elegir</a>
+        </div>
+      </div>
+      <p class="nota">Precios en pesos colombianos. Pagas por Nequi, Daviplata, Davivienda o Bold.</p>
+    </div>
+  </section>
+
+  <section class="seccion" id="preguntas" aria-labelledby="t-preguntas">
+    <div class="wrap">
+      <h2 id="t-preguntas" class="revelar">Preguntas frecuentes</h2>
+      <div class="preguntas">
+        <details>
+          <summary>¿Cómo pago?</summary>
+          <p>Por Nequi, Daviplata, Davivienda o Bold. Escríbele a Luis por WhatsApp y te envía los datos.</p>
+        </details>
+        <details>
+          <summary>¿Necesito saber algo de inglés para empezar?</summary>
+          <p>No. Empiezas en tu nivel, desde cero si hace falta, y hablas desde la primera clase.</p>
+        </details>
+        <details>
+          <summary>¿Cuándo empiezo?</summary>
+          <p>Apenas confirmes tu pago, cuadras con Luis el día y la hora de tus clases.</p>
+        </details>
+        <details>
+          <summary>¿Hasta cuándo aplican las promociones?</summary>
+          <p>Hasta el 28 de noviembre de 2026. Las que tienen cupos limitados se cierran antes si se llenan.</p>
+        </details>
+        <details>
+          <summary>¿Puedo cambiar mi horario después?</summary>
+          <p>Sí. Tu horario se ajusta a tu rutina; lo acuerdas directamente con tu profe.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion cierre" id="cierre" aria-labelledby="t-cierre">
+    <svg class="medidor" viewBox="0 0 600 600" aria-hidden="true">
+      <g fill="none" stroke-linecap="round">
+        <path d="M55.7 231.1 A260 260 0 0 1 544.3 231.1" stroke="#D4111F" stroke-width="16"/>
+        <g class="ondas">
+          <path d="M337.3 108.3 A215 215 0 0 1 486.2 212.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".6"/>
+          <path d="M332.1 137.8 A185 185 0 0 1 460.2 227.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".5"/>
+          <path d="M326.9 167.4 A155 155 0 0 1 434.2 242.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".4"/>
+          <path d="M321.7 196.9 A125 125 0 0 1 408.3 257.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".3"/>
+          <path d="M316.5 226.4 A95 95 0 0 1 382.3 272.5" stroke="#D4111F" stroke-width="9" stroke-opacity=".22"/>
+        </g>
+        <path class="aguja aguja-a" d="M300 320 L214 197" stroke="currentColor" stroke-width="26"/>
+        <path class="aguja aguja-b" d="M300 320 L441 152" stroke="#D4111F" stroke-width="26"/>
+      </g>
+      <circle cx="300" cy="320" r="24" fill="currentColor"/>
+    </svg>
+    <div class="wrap">
+      <h2 id="t-cierre" class="revelar">Dentro de un año vas a desear haber empezado hoy.</h2>
+      <p class="aparece" style="--d:.4s">Escríbele a Luis y empieza esta semana. Te responde él mismo, por WhatsApp.</p>
+      <div class="cuenta aparece" style="--d:.55s" data-cuenta>
+        <p class="cuenta-tit">Las promociones terminan en</p>
+        <div class="cajas" role="timer" aria-label="Tiempo que falta para el cierre de las promociones">
+          <span class="caja"><b data-u="d">--</b><small>días</small></span>
+          <span class="caja"><b data-u="h">--</b><small>horas</small></span>
+          <span class="caja"><b data-u="m">--</b><small>min</small></span>
+          <span class="caja"><b data-u="s">--</b><small>seg</small></span>
+        </div>
+      </div>
+      <a class="btn btn-rojo btn-brillo aparece" style="--d:.7s" href="https://wa.me/573016507626?text=Hola%20Luis%2C%20vi%20la%20p%C3%A1gina%20de%20English%20Time%20y%20quiero%20informaci%C3%B3n%20sobre%20las%20clases." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Escribirle a Luis por WhatsApp</a>
+      <p class="numero">O guarda el número: <a href="tel:+573016507626">+57 301 650 7626</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-blanco-web.png" alt="English Time" width="480" height="345" loading="lazy">
+    <span>© 2026 English Time. Clases de inglés 1 a 1 por Zoom.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var movimiento = document.documentElement.classList.contains('anim');
+  function dos(n) { return (n < 10 ? '0' : '') + n; }
+  function cada(sel, fn, raiz) { [].forEach.call((raiz || document).querySelectorAll(sel), fn); }
+
+  /* 1. Titulares: se parten en palabras para que suban una por una. */
+  cada('.revelar', function (el) {
+    var texto = el.textContent.trim().replace(/\s+/g, ' ');
+    el.setAttribute('aria-label', texto);
+    el.textContent = '';
+    texto.split(' ').forEach(function (p, i) {
+      var w = document.createElement('span'), s = document.createElement('span');
+      w.className = 'w'; w.setAttribute('aria-hidden', 'true');
+      s.textContent = p; s.style.setProperty('--i', i);
+      w.appendChild(s); el.appendChild(w); el.appendChild(document.createTextNode(' '));
+    });
+  });
+
+  /* 2. Entradas al hacer scroll: cada bloque se marca una sola vez cuando aparece. */
+  var deck = document.getElementById('deck');
+  var revelables = document.querySelectorAll('.revelar, .aparece, .escena, .versus-fila, .pasos, .plan, .cierre, .deck');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visto');
+        if (e.target === deck) { deck.classList.add('repartir'); setTimeout(function () { deck.classList.remove('repartir'); }, 1300); }
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    [].forEach.call(revelables, function (el) { io.observe(el); });
+  } else {
+    [].forEach.call(revelables, function (el) { el.classList.add('visto'); });
+  }
+  // El héroe entra apenas carga la página, sin esperar al scroll.
+  setTimeout(function () { cada('.hero .aparece, .hero .revelar', function (el) { el.classList.add('visto'); }); }, 80);
+
+  /* 3. Cuenta regresiva hasta el 28 de noviembre de 2026, 11:59 p. m., hora de Colombia. */
+  var fin = new Date('2026-11-28T23:59:59-05:00').getTime();
+  function tic() {
+    var ms = fin - Date.now();
+    if (ms <= 0) {
+      cada('[data-cuenta]', function (c) { c.innerHTML = '<p class="cuenta-tit">Las promociones de Black Friday terminaron. Escríbele a Luis para conocer las de diciembre.</p>'; });
+      cada('[data-cuenta-corta]', function (c) { c.textContent = 'ya terminaron'; });
+      return false;
+    }
+    var t = { d: Math.floor(ms / 864e5), h: Math.floor(ms % 864e5 / 36e5), m: Math.floor(ms % 36e5 / 6e4), s: Math.floor(ms % 6e4 / 1e3) };
+    cada('[data-cuenta] [data-u]', function (b) {
+      var v = dos(t[b.dataset.u]);
+      if (b.textContent === v) return;
+      b.textContent = v;
+      if (movimiento) { b.classList.remove('tic'); void b.offsetWidth; b.classList.add('tic'); }
+    });
+    cada('[data-cuenta-corta]', function (c) { c.textContent = t.d + 'd ' + dos(t.h) + 'h ' + dos(t.m) + 'm ' + dos(t.s) + 's'; });
+    return true;
+  }
+  if (tic()) { var intervalo = setInterval(function () { if (!tic()) clearInterval(intervalo); }, 1000); }
+
+  /* 4. Un día en inglés: cada escena cambia el color de la sección y mueve los relojes a su hora. */
+  var dia = document.getElementById('dia');
+  var escenas = [].slice.call(dia.querySelectorAll('.escena'));
+  var ahora = escenas[escenas.length - 1];
+  var miniHora = dia.querySelector('.mini-hora'), miniPasos = dia.querySelectorAll('.mini-pasos i');
+  var activa = null, minActual = 420, girado = 0;
+  function etiqueta(min) { var h = Math.floor(min / 60) % 24; return (h % 12 || 12) + ':' + dos(min % 60) + ' ' + (h < 12 ? 'a.m.' : 'p.m.'); }
+  // Las manecillas giran por el camino más corto (hasta 6 horas hacia adelante o hacia atrás).
+  function mover(min) {
+    var d = ((min - minActual) % 720 + 720) % 720;
+    if (d > 360) d -= 720;
+    girado += d; minActual = min;
+    cada('.mano-h', function (x) { x.style.transform = 'rotate(' + (210 + girado * 0.5) + 'deg)'; }, dia);
+    cada('.mano-m', function (x) { x.style.transform = 'rotate(' + (girado * 6) + 'deg)'; }, dia);
+  }
+  function pintarAhora() {
+    var d = new Date(), h = d.getHours(), m = d.getMinutes(), min = h * 60 + m;
+    document.getElementById('previa-ahora').textContent = (h % 12 || 12) === 1 ? 'Y ahora mismo es la' : 'Y ahora mismo son las';
+    document.getElementById('hora-ahora').innerHTML = (h % 12 || 12) + ':' + dos(m) + '<small>' + (h < 12 ? 'a.m.' : 'p.m.') + '</small>';
+    ahora.dataset.min = min;
+    if (activa === ahora) { mover(min); miniHora.textContent = etiqueta(min); }
+  }
+  pintarAhora(); setInterval(pintarAhora, 30000);
+  function revisarDia() {
+    var mitad = innerHeight / 2, nueva = null;
+    for (var i = 0; i < escenas.length; i++) {
+      var r = escenas[i].getBoundingClientRect();
+      if (r.top <= mitad && r.bottom > mitad) { nueva = escenas[i]; break; }
+    }
+    if (!nueva) nueva = escenas[0].getBoundingClientRect().top > mitad ? escenas[0] : ahora;
+    if (nueva === activa) return;
+    activa = nueva;
+    var idx = escenas.indexOf(nueva);
+    dia.dataset.momento = nueva.dataset.momento;
+    mover(+nueva.dataset.min);
+    miniHora.textContent = etiqueta(+nueva.dataset.min);
+    [].forEach.call(miniPasos, function (p, i) { p.classList.toggle('on', i <= idx); });
+  }
+
+  /* 5. Barra fija de WhatsApp: visible entre el botón del héroe y el cierre. */
+  var fija = document.getElementById('fija');
+  var accionesHero = document.querySelector('.hero .acciones'), cierre = document.getElementById('cierre');
+  var fijaVisible = false;
+  function revisarFija() {
+    var ver = accionesHero.getBoundingClientRect().bottom < 0 && cierre.getBoundingClientRect().top > innerHeight * 0.55;
+    if (ver === fijaVisible) return;
+    fijaVisible = ver;
+    fija.classList.toggle('visible', ver);
+    fija.setAttribute('aria-hidden', String(!ver));
+    if (ver) fija.removeAttribute('inert'); else fija.setAttribute('inert', '');
+  }
+
+  var pendiente = false;
+  function alScroll() { pendiente = false; revisarDia(); revisarFija(); }
+  function pedir() { if (!pendiente) { pendiente = true; requestAnimationFrame(alScroll); } }
+  addEventListener('scroll', pedir, { passive: true });
+  addEventListener('resize', pedir);
+  addEventListener('load', pedir);
+  alScroll();
+
+  /* 6. Mazo de promociones: avanza solo como historias, se puede deslizar, tocar o usar con las flechas. */
+  var cartas = [].slice.call(deck.querySelectorAll('.carta'));
+  var tabs = [].slice.call(deck.querySelectorAll('.deck-tab'));
+  var paneles = [].slice.call(deck.querySelectorAll('.deck-panel'));
+  var num = deck.querySelector('.deck-num'), mesa = deck.querySelector('.deck-mesa');
+  var n = cartas.length, act = 0;
+  var auto = movimiento, enVista = false, encima = false;
+
+  function pintarDeck() {
+    cartas.forEach(function (c, i) { c.dataset.o = (i - act + n) % n; });
+    tabs.forEach(function (t, i) { t.setAttribute('aria-selected', String(i === act)); t.tabIndex = i === act ? 0 : -1; });
+    paneles.forEach(function (p, i) {
+      var on = i === act;
+      p.classList.toggle('activo', on);
+      p.setAttribute('aria-hidden', String(!on));
+      if (on) p.removeAttribute('inert'); else p.setAttribute('inert', '');
+    });
+    num.textContent = (act + 1) + ' / ' + n;
+  }
+  function sinTransicion(el, fn) { el.style.transition = 'none'; fn(); void el.offsetWidth; el.style.transition = ''; }
+  function ir(nueva, dir) {
+    nueva = (nueva + n) % n;
+    if (nueva === act) return;
+    var vieja = cartas[act], entra = cartas[nueva];
+    if (movimiento && dir > 0) {
+      // La carta de adelante sale volando a la izquierda y vuelve al fondo del mazo.
+      clearTimeout(vieja._t);
+      vieja.classList.add('sale');
+      vieja._t = setTimeout(function () { sinTransicion(vieja, function () { vieja.classList.remove('sale'); }); }, 460);
+    } else if (movimiento && dir < 0) {
+      // La carta anterior entra desde la izquierda.
+      clearTimeout(entra._t);
+      sinTransicion(entra, function () { entra.classList.add('sale'); });
+      requestAnimationFrame(function () { requestAnimationFrame(function () { entra.classList.remove('sale'); }); });
+    }
+    act = nueva;
+    pintarDeck();
+  }
+  function estadoAuto() {
+    deck.classList.toggle('auto', auto);
+    deck.classList.toggle('pausa', !enVista || encima || document.hidden);
+  }
+  function parar() { if (auto) { auto = false; estadoAuto(); } }
+
+  deck.addEventListener('animationend', function (e) {
+    if (auto && e.animationName === 'llenar' && e.target.closest('.deck-tab') === tabs[act]) ir(act + 1, 1);
+  });
+  deck.addEventListener('mouseenter', function () { encima = true; estadoAuto(); });
+  deck.addEventListener('mouseleave', function () { encima = false; estadoAuto(); });
+  document.addEventListener('visibilitychange', estadoAuto);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { enVista = es[0].isIntersecting; estadoAuto(); }, { threshold: 0.35 }).observe(deck);
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { parar(); ir(i, i > act ? 1 : -1); });
+    t.addEventListener('keydown', function (e) {
+      var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!k) return;
+      e.preventDefault(); parar(); ir(act + k, k); tabs[act].focus();
+    });
+  });
+  cada('.deck-flecha', function (b) {
+    b.addEventListener('click', function () { parar(); var d = +b.dataset.dir; ir(act + d, d); });
+  }, deck);
+
+  // Arrastrar con el dedo o el mouse; un toque en la carta de adelante abre el WhatsApp de esa promo.
+  var x0 = null, dx = 0, arrastra = false, puntero = null, objetivo = null;
+  mesa.addEventListener('pointerdown', function (e) {
+    if (e.button) return;
+    x0 = e.clientX; dx = 0; arrastra = false; puntero = e.pointerId; objetivo = e.target.closest('.carta');
+  });
+  mesa.addEventListener('pointermove', function (e) {
+    if (x0 === null || e.pointerId !== puntero) return;
+    dx = e.clientX - x0;
+    if (!arrastra && Math.abs(dx) > 8) {
+      arrastra = true; parar();
+      try { mesa.setPointerCapture(puntero); } catch (err) {}
+      cartas[act].style.transition = 'none';
+    }
+    if (arrastra) cartas[act].style.transform = 'translateX(' + dx + 'px) rotate(' + (dx / 18) + 'deg)';
+  });
+  function soltar(e) {
+    if (x0 === null) return;
+    x0 = null;
+    var frente = cartas[act];
+    if (!arrastra) {
+      if (e.type !== 'pointerup' || !objetivo) return;
+      var i = cartas.indexOf(objetivo);
+      if (i === act) paneles[act].querySelector('a.btn').click();
+      else { parar(); ir(i, 1); }
+      return;
+    }
+    frente.style.transition = ''; frente.style.transform = '';
+    if (dx < -60) ir(act + 1, 1);
+    else if (dx > 60) ir(act - 1, -1);
+  }
+  mesa.addEventListener('pointerup', soltar);
+  mesa.addEventListener('pointercancel', soltar);
+
+  pintarDeck();
+  estadoAuto();
+})();
+</script>
+</body>
+</html>

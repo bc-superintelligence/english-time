@@ -1,0 +1,15 @@
+# dependencias y compilaciones
+node_modules/
+web/.next/
+web/out/
+*.tsbuildinfo
+next-env.d.ts
+
+# sistema y editor
+.DS_Store
+.vscode/
+
+# notas internas del negocio y configuración local (no se publican)
+brief-english-time-2.0.md
+.claude/
+.env*
