@@ -15,14 +15,19 @@ npm run piezas   # regenera las 5 publicidades (PNG en ../publicidades y JPG en 
 
 | Qué | Archivo |
 |---|---|
-| Textos, precios, promociones, planes, preguntas y mensajes de WhatsApp | `lib/contenido.tsx` |
+| Textos, precios, promociones, planes, modalidades (particulares y en grupo), preguntas y mensajes de WhatsApp | `lib/contenido.tsx` |
+| Tasa del dólar para los precios en USD (`TRM` y `FECHA_TRM`) | `lib/contenido.tsx` |
+| Países del mapa (lista de texto) | `PAISES` en `lib/contenido.tsx` |
+| Rutas y puntos del mapa | `lib/mapa.ts`, `public/assets/mapa-*.svg` (se regeneran con `scripts/generar-mapa.mjs`) |
 | Diseño de las 5 publicidades (también son las tarjetas del carrusel) | `public/piezas/piezas.html` |
 | Secciones de la página | `components/secciones.tsx` |
-| Animaciones, cuenta regresiva, carrusel y barra fija | `components/Interacciones.tsx` |
-| Estilos (copiados tal cual de la landing) | `app/globals.css` |
-| Título, descripción e imagen para compartir | `app/layout.tsx` |
+| Animaciones, cuenta regresiva, carrusel, barra fija, sello de Black Friday y aviones del mapa | `components/Interacciones.tsx` |
+| Estilos | `app/globals.css` |
+| Título, descripción, imagen para compartir y saludo según la hora (script del `<head>`) | `app/layout.tsx` |
 
-Si cambia un precio, cámbialo en `lib/contenido.tsx` y en `public/piezas/piezas.html`, y corre `npm run piezas`.
+Si cambia un precio, cámbialo en `lib/contenido.tsx` y en `public/piezas/piezas.html`, y corre `npm run piezas`. Los dólares se calculan solos con la `TRM`.
+
+Para agregar un país al mapa: súmalo a `DESTINOS` en `scripts/generar-mapa.mjs` y a `PAISES` en `lib/contenido.tsx`, y corre el script (las instrucciones están en su encabezado).
 
 ## Publicar
 

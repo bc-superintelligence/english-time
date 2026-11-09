@@ -22,12 +22,12 @@ export const metadata: Metadata = {
     url: '/',
     siteName: NEGOCIO.nombre,
     title: 'English Time: imagina un día hablando inglés',
-    description: 'Clases de inglés personalizadas 1 a 1 en vivo por Zoom, desde cualquier país. Tu horario, tu nivel y tus clases nunca se pierden.',
+    description: 'Clases de inglés en vivo por Zoom, particulares 1 a 1 y en grupo, desde cualquier país. Tu horario, tu nivel y tus clases particulares nunca se pierden.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'English Time: clases de inglés personalizadas 1 a 1',
-    description: 'Clases de inglés online en vivo por Zoom, a tu ritmo y en tu horario.',
+    title: 'English Time: clases de inglés por Zoom, 1 a 1 y en grupo',
+    description: 'Clases de inglés online en vivo por Zoom, particulares y en grupo, a tu ritmo y en tu horario.',
   },
   robots: {
     index: true,
@@ -46,8 +46,9 @@ export const viewport: Viewport = {
   themeColor: '#0B1D45',
 };
 
-// Antes de pintar: activa las animaciones solo si la persona no pidió reducir el movimiento.
-const ACTIVAR_ANIMACIONES = "document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('anim');";
+// Antes de pintar: activa las animaciones solo si la persona no pidió reducir el movimiento,
+// y marca el momento del día de quien visita para mostrar el saludo correcto (días 5–11, tardes 12–18, noches 19–4).
+const ACTIVAR_ANIMACIONES = "var d=document.documentElement,h=new Date().getHours();d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('anim');d.dataset.saludo=h>=5&&h<12?'dia':h>=12&&h<19?'tarde':'noche';";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   // Las dos fuentes de la primera pantalla se piden de una vez (React las pone en el <head>).

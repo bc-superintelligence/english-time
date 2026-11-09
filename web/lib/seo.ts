@@ -2,11 +2,11 @@ import { FIN_PROMOS, GARANTIA, NEGOCIO, PLANES, PREGUNTAS, SITIO, TELEFONO, WHAT
 
 /* Palabras clave principales: guían títulos, descripciones y datos estructurados. */
 export const SEO = {
-  titulo: 'Clases de inglés personalizadas online 1 a 1 | English Time',
-  descripcion: 'Clases de inglés personalizadas 1 a 1 por Zoom, desde cualquier país. Preparación para certificaciones y ciudadanía americana. Si faltas, tu clase se reprograma.',
+  titulo: 'Clases de inglés online por Zoom: 1 a 1 y en grupo | English Time',
+  descripcion: 'Clases de inglés en vivo por Zoom, particulares 1 a 1 y en grupo, desde cualquier país. Preparación para certificaciones y ciudadanía americana. Precios en COP y USD.',
   palabrasClave: [
     'clases de inglés', 'clases de inglés online', 'clases de inglés personalizadas', 'aprender inglés',
-    'clases de inglés 1 a 1', 'profesor de inglés', 'inglés por Zoom', 'clases de inglés online desde cualquier país', 'clases de inglés Colombia',
+    'clases de inglés 1 a 1', 'clases particulares de inglés online', 'clases de inglés en grupo', 'profesor de inglés', 'inglés por Zoom', 'clases de inglés online desde cualquier país', 'clases de inglés Colombia',
     'preparación examen de ciudadanía americana', 'clases de inglés para la ciudadanía', 'preparación para exámenes de certificación de inglés',
     'inglés conversacional', 'inglés para viajar', 'inglés para el trabajo', 'inglés desde cero',
     'curso de inglés online', 'clases particulares de inglés',
@@ -31,7 +31,7 @@ export function datosEstructurados() {
     areaServed: 'Worldwide',
     availableLanguage: ['es', 'en'],
     knowsAbout: [
-      'Inglés', 'Inglés conversacional', 'Inglés para viajar', 'Inglés para el trabajo', 'Inglés desde cero',
+      'Inglés', 'Clases particulares de inglés', 'Clases de inglés en grupo', 'Inglés conversacional', 'Inglés para viajar', 'Inglés para el trabajo', 'Inglés desde cero',
       'Preparación para el examen de ciudadanía de Estados Unidos', 'Preparación para exámenes de certificación de inglés',
     ],
     contactPoint: {
@@ -154,6 +154,18 @@ export function datosEstructurados() {
     'Clases 1 a 1 por Zoom para preparar el formato, los tiempos y las cuatro habilidades del examen de certificación: hablar, escuchar, leer y escribir.',
     'Inglés para exámenes de certificación');
 
+  const grupo = {
+    '@type': 'Course',
+    '@id': id('grupo'),
+    name: 'Clases de inglés en grupo por Zoom',
+    description: 'Clases de inglés en vivo por Zoom con otros estudiantes, en un horario fijo y a un precio más bajo que las clases particulares.',
+    provider: proveedor,
+    inLanguage: 'es',
+    teaches: 'Inglés',
+    url: `${SITIO}/#planes`,
+    hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'Online', location: { '@type': 'VirtualLocation', url: `${SITIO}/` } },
+  };
+
   const preguntas = {
     '@type': 'FAQPage',
     '@id': id('preguntas'),
@@ -164,7 +176,7 @@ export function datosEstructurados() {
     })),
   };
 
-  return { '@context': 'https://schema.org', '@graph': [organizacion, sitio, pagina, curso, ciudadania, certificacion, bootcamp, preguntas] };
+  return { '@context': 'https://schema.org', '@graph': [organizacion, sitio, pagina, curso, grupo, ciudadania, certificacion, bootcamp, preguntas] };
 }
 
 /** JSON listo para <script type="application/ld+json">, sin "<" que pueda cerrar la etiqueta. */

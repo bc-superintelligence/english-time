@@ -1,5 +1,5 @@
 import { Sprite } from '@/components/base';
-import { BarraFija, Cierre, Clases, Dia, Heroe, Objetivos, PiePagina, Planes, Preguntas, Promociones } from '@/components/secciones';
+import { BarraFija, Cierre, Clases, Dia, Heroe, Mundo, Objetivos, PiePagina, Planes, Preguntas, Promociones } from '@/components/secciones';
 import Interacciones from '@/components/Interacciones';
 import { datosEstructurados, jsonLd } from '@/lib/seo';
 
@@ -15,6 +15,7 @@ export default function Inicio() {
         <Dia />
         <Clases />
         <Objetivos />
+        <Mundo />
         <Promociones />
         <Planes />
         <Preguntas />

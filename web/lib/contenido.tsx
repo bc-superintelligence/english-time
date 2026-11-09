@@ -9,12 +9,24 @@ export const SITIO = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://englishtime.c
 export const NEGOCIO = {
   nombre: 'English Time',
   lema: 'easy, fast, fun!',
-  descripcion: 'Academia de inglés en línea con clases personalizadas 1 a 1 en vivo por Zoom, para estudiantes en cualquier país. Tú escoges el horario, empiezas en tu nivel, hablas desde el primer día y tus clases nunca se pierden: si no puedes asistir, se reprograman.',
+  descripcion: 'Academia de inglés en línea con clases en vivo por Zoom, particulares 1 a 1 y en grupo, para estudiantes en cualquier país. Tú escoges el horario, empiezas en tu nivel, hablas desde el primer día y tus clases particulares nunca se pierden: si no puedes asistir, se reprograman.',
 };
 
 export const WHATSAPP = '573016507626';
 export const TELEFONO = '+573016507626';
 export const TELEFONO_VISIBLE = '+57 301 650 7626';
+
+/* Precios en dólares: aproximados, con la TRM oficial del día (Superintendencia Financiera de Colombia).
+   Para actualizarlos basta con cambiar la tasa y la fecha. */
+export const TRM = 3237.83;
+export const FECHA_TRM = '9 de noviembre de 2026';
+
+/** Precio aproximado en dólares de un valor en pesos: de a 5 dólares desde US$100, de a 1 por debajo. */
+export function usd(cop: string | number): string {
+  const valor = (typeof cop === 'number' ? cop : Number(cop.replace(/[^\d]/g, ''))) / TRM;
+  const redondo = valor >= 100 ? Math.round(valor / 5) * 5 : Math.round(valor);
+  return `US$${redondo.toLocaleString('en-US')}`;
+}
 
 /** Cierre de las promociones: 28 de noviembre de 2026, 11:59 p. m., hora de Colombia. */
 export const FIN_PROMOS = '2026-11-28T23:59:59-05:00';
@@ -79,7 +91,7 @@ export const ESCENAS: Escena[] = [
 ];
 
 export const VERSUS: { antes: string; despues: string }[] = [
-  { antes: 'Grupos de 20, donde hablas dos minutos por clase.', despues: 'Clases 1 a 1: la clase entera es para ti.' },
+  { antes: 'Salones de 30, donde hablas dos minutos por clase.', despues: 'Clases particulares 1 a 1 o en grupo, hechas para que hables.' },
   { antes: 'Si faltas a una clase, la pierdes.', despues: 'Si no puedes asistir, tu clase se reprograma. Nunca la pierdes.' },
   { antes: 'Gramática en el tablero y cero conversación.', despues: 'Hablas desde el primer día, a tu nivel.' },
   { antes: 'Horarios fijos y tráfico para llegar a la academia.', despues: 'En vivo por Zoom, desde tu casa y en el horario que tú escojas.' },
@@ -89,7 +101,7 @@ export const VERSUS: { antes: string; despues: string }[] = [
 
 export const PASOS: { titulo: string; texto: string }[] = [
   { titulo: 'Le escribes a Luis por WhatsApp.', texto: 'Le cuentas para qué quieres el inglés y cuánto tiempo tienes.' },
-  { titulo: 'Escoges tu plan y tu horario.', texto: 'Un plan mensual, el Plan 90 o una promoción de Black Friday.' },
+  { titulo: 'Escoges tu plan y tu horario.', texto: 'Clases particulares o en grupo, un plan mensual o una promo de Black Friday.' },
   { titulo: 'Hablas en tu primera clase.', texto: 'Desde el primer día, a tu nivel y sin pena.' },
 ];
 
@@ -100,6 +112,7 @@ export const CINTA: { texto: string; destacado?: string }[] = [
   { texto: 'Paga un mes, estudia dos' },
   { texto: 'Plan 90: ', destacado: '15% menos' },
   { texto: 'Congela tu precio ', destacado: '2026' },
+  { texto: 'Clases particulares y en grupo por Zoom' },
   { texto: 'Tus clases nunca se pierden' },
   { texto: 'Preparación para la ciudadanía americana' },
 ];
@@ -165,10 +178,11 @@ export const PLANES: { veces: string; clases: string; precio: string; porClase: 
 ];
 
 export const PREGUNTAS: { pregunta: string; respuesta: string }[] = [
+  { pregunta: '¿Hay clases particulares y clases en grupo?', respuesta: 'Sí, las dos, siempre en vivo por Zoom. En las clases particulares 1 a 1 estás solo con tu profe y escoges el horario. En las clases en grupo estudias con otros estudiantes, en un horario fijo y a un precio más bajo.' },
   { pregunta: '¿Cómo son las clases de inglés personalizadas?', respuesta: 'Son clases 1 a 1 en vivo por Zoom: solo tú y tu profe. Avanzas a tu ritmo, en tu nivel y con conversación desde el primer día.' },
   { pregunta: '¿Las clases de inglés son online o presenciales?', respuesta: 'Son online, en vivo por Zoom. Puedes tomarlas desde cualquier país del mundo con una conexión a internet, y el horario se acuerda según tu zona horaria.' },
   { pregunta: '¿Qué pasa si no puedo asistir a una clase?', respuesta: 'Tu clase no se pierde: se reprograma para otro día y otra hora. Esto aplica para las clases personalizadas 1 a 1.' },
-  { pregunta: '¿Cuánto cuestan las clases de inglés?', respuesta: 'Los planes mensuales cuestan $480.000 (8 clases), $700.000 (12 clases) o $850.000 (16 clases) en pesos colombianos, así que cada clase sale entre $53.100 y $60.000. Hasta el 28 de noviembre hay promociones de Black Friday.' },
+  { pregunta: '¿Cuánto cuestan las clases de inglés?', respuesta: `Los planes mensuales de clases particulares cuestan $480.000 COP (8 clases, unos ${usd(480000)}), $700.000 COP (12 clases, unos ${usd(700000)}) o $850.000 COP (16 clases, unos ${usd(850000)}), así que cada clase sale entre $53.100 y $60.000 COP. Hasta el 28 de noviembre hay promociones de Black Friday.` },
   { pregunta: '¿Me preparan para el examen de ciudadanía americana o para una certificación de inglés?', respuesta: 'Sí. Si vas a presentar el examen de ciudadanía de Estados Unidos o un examen de certificación de inglés, tus clases 1 a 1 se enfocan en ese examen, su formato y lo que te van a preguntar, para que llegues seguro.' },
   { pregunta: '¿Necesito saber algo de inglés para empezar?', respuesta: 'No. Empiezas en tu nivel, desde cero si hace falta, y hablas desde la primera clase.' },
   { pregunta: '¿Cuántas clases de inglés a la semana debo tomar?', respuesta: 'Puedes tomar 2, 3 o 4 clases por semana. Con más clases a la semana avanzas más rápido y el precio por clase baja.' },
@@ -214,5 +228,20 @@ export const OBJETIVOS: { icono: IconoObjetivo; titulo: string; texto: string; b
   },
 ];
 
-/** Las clases son online: se toman desde cualquier país. Estos son ejemplos para el texto. */
-export const PAISES = ['Colombia', 'Estados Unidos', 'México', 'España', 'Canadá'];
+/** Países donde English Time ya tiene estudiantes, además de Colombia (el mapa y sus rutas están en lib/mapa.ts). */
+export const PAISES = ['Estados Unidos', 'Canadá', 'Panamá', 'Chile', 'España', 'Países Bajos', 'Polonia', 'Japón', 'Australia'];
+
+/** Las dos formas de tomar clase. Solo las particulares tienen la garantía de reprogramación. */
+export const MODALIDADES: { id: 'particulares' | 'grupo'; titulo: string; texto: string; precio: string; detalle: string; boton: string; mensaje?: string }[] = [
+  {
+    id: 'particulares', titulo: 'Clases particulares 1 a 1',
+    texto: 'Solo tú y tu profe. Escoges el horario, avanzas a tu ritmo y, si no puedes asistir, tu clase se reprograma.',
+    precio: '$480.000', detalle: 'COP al mes', boton: 'Ver los planes',
+  },
+  {
+    id: 'grupo', titulo: 'Clases en grupo',
+    texto: 'Estudias en vivo con otros estudiantes, en un horario fijo y a un precio más bajo. Como el Bootcamp Navideño de diciembre.',
+    precio: '$49.000', detalle: 'COP el Bootcamp de 7 días', boton: 'Preguntar por los grupos',
+    mensaje: 'Hola Luis, quiero información sobre las clases de inglés en grupo.',
+  },
+];

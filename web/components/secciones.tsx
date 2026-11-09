@@ -2,9 +2,10 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { Cuenta, Icono, Medidor, Revelar, retraso } from './base';
 import {
-  CINTA, ESCENAS, GARANTIA, MENSAJES, OBJETIVOS, PAISES, PASOS, PLANES, PREGUNTAS, PROMOS, TELEFONO, TELEFONO_VISIBLE, VERSUS, wa,
+  CINTA, ESCENAS, FECHA_TRM, GARANTIA, MENSAJES, MODALIDADES, OBJETIVOS, PAISES, PASOS, PLANES, PREGUNTAS, PROMOS, TELEFONO, TELEFONO_VISIBLE, TRM, VERSUS, usd, wa,
 } from '@/lib/contenido';
 import type { IconoObjetivo } from '@/lib/contenido';
+import { MAPA } from '@/lib/mapa';
 
 const externo = { target: '_blank', rel: 'noopener' } as const;
 
@@ -35,25 +36,81 @@ function Cinta() {
   );
 }
 
+/* Sello de Black Friday: gira, cambia de promoción cada dos segundos, se inclina hacia el puntero y lleva a las promociones. */
+const RAYOS = Array.from({ length: 48 }, (_, i) => {
+  const a = (i / 48) * Math.PI * 2, r = i % 2 ? 90 : 99;
+  return `${(100 + r * Math.sin(a)).toFixed(1)} ${(100 - r * Math.cos(a)).toFixed(1)}`;
+}).join(' ');
+const OFERTAS_SELLO: { grande: string; chica: string }[] = [
+  { grande: '2×1', chica: 'paga 1 mes' },
+  { grande: '15%', chica: 'menos, Plan 90' },
+  { grande: '$49 mil', chica: 'Bootcamp' },
+  { grande: '2026', chica: 'precio congelado' },
+];
+
+function Sello({ lugar }: { lugar: 'barra' | 'arte' }) {
+  const anillo = `sello-anillo-${lugar}`;
+  return (
+    <a className={`sello sello-${lugar}`} href="#promociones" aria-label="Black Friday: ver las cuatro promociones, válidas hasta el 28 de noviembre">
+      <span className="sello-cuerpo">
+        {/* El anillo gira como capa propia (transform en el <svg>): el navegador no lo vuelve a pintar en cada cuadro. */}
+        <svg className="sello-giro" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><path id={anillo} d="M100 100m-66 0a66 66 0 1 1 132 0a66 66 0 1 1-132 0" /></defs>
+          <polygon points={RAYOS} fill="#000" />
+          <text className="sello-texto">
+            <textPath href={`#${anillo}`} textLength="408">{lugar === 'arte' ? 'BLACK FRIDAY ✦ HASTA EL 28 DE NOVIEMBRE ✦ ' : 'BLACK FRIDAY ✦ BLACK FRIDAY ✦ '}</textPath>
+          </text>
+        </svg>
+        <svg className="sello-centro" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="54" fill="#D4111F" />
+          <circle cx="100" cy="100" r="49" fill="none" stroke="#fff" strokeOpacity=".45" strokeWidth="1.2" strokeDasharray="2 4" />
+        </svg>
+        <span className="sello-ofertas" aria-hidden="true">
+          {OFERTAS_SELLO.map((o, i) => (
+            <span className={i === 0 ? 'sello-oferta on' : 'sello-oferta'} key={o.grande}><b>{o.grande}</b><small>{o.chica}</small></span>
+          ))}
+        </span>
+      </span>
+    </a>
+  );
+}
+
+/* Saludo según la hora de quien visita: el script del <head> marca <html data-saludo> antes de pintar. */
+function Saludo() {
+  return (
+    <p className="saludo aparece" style={retraso('.1s')}>
+      <span data-s="hola">Hola.</span>
+      <span data-s="dia"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none" /><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" /></svg>Buenos días.</span>
+      <span data-s="tarde"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 16a6.5 6.5 0 0 1 13 0z" fill="currentColor" stroke="none" /><path d="M2.5 19.5h19M12 4.5v2.2M4.6 8.6l1.6 1.4M19.4 8.6l-1.6 1.4" /></svg>Buenas tardes.</span>
+      <span data-s="noche"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.6A8 8 0 0 1 9.4 4.5a8 8 0 1 0 10.1 10.1z" fill="currentColor" stroke="none" /></svg>Buenas noches.</span>
+    </p>
+  );
+}
+
 export function Heroe() {
   return (
     <header className="hero">
       <div className="wrap barra">
-        <img src="/assets/logo-claro.webp" alt="English Time: easy, fast, fun!" width={260} height={188} fetchPriority="high" />
+        <img className="logo-hero" src="/assets/logo-claro-hd.webp" srcSet="/assets/logo-claro.webp 260w, /assets/logo-claro-hd.webp 480w" sizes="(max-width: 700px) 106px, 160px"
+          alt="English Time: easy, fast, fun!" width={480} height={346} fetchPriority="high" />
+        <Sello lugar="barra" />
         <a className="btn btn-borde" href={wa(MENSAJES.general)} {...externo}>Escribir por WhatsApp</a>
       </div>
 
       <div className="wrap hero-grid">
         <div className="texto-hero">
-          <div className="campana aparece" style={retraso('.1s')}><span className="pill">Black Friday</span><span>Promociones hasta el 28 de noviembre</span></div>
-          <Revelar as="h1" style={retraso('.25s')} tema="Clases de inglés personalizadas 1 a 1 por Zoom">Imagina un día hablando inglés.</Revelar>
+          <Saludo />
+          <Revelar as="h1" style={retraso('.25s')} tema="Clases de inglés en vivo por Zoom: particulares 1 a 1 y en grupo">Imagina un día hablando inglés.</Revelar>
           <p className="lead aparece" style={retraso('.75s')}>Sin traductor, sin pena y sin quedarte callado. Baja y vívelo hora por hora: así cambia tu vida cuando por fin hablas inglés.</p>
           <div className="acciones aparece" style={retraso('.95s')}>
             <a className="btn btn-rojo btn-brillo" href={wa(MENSAJES.general)} {...externo}><Icono id="wa" />Escribirle a Luis por WhatsApp</a>
             <Cuenta />
           </div>
         </div>
-        <Medidor />
+        <div className="hero-arte">
+          <Medidor />
+          <Sello lugar="arte" />
+        </div>
       </div>
 
       <div className="wrap">
@@ -194,7 +251,54 @@ export function Objetivos() {
             </li>
           ))}
         </ul>
-        <p className="ciudades aparece">Clases de inglés online desde cualquier país: {PAISES.join(', ')} o donde estés. Solo necesitas internet, y el horario se acuerda según tu zona horaria.</p>
+        <p className="objetivos-pista" aria-hidden="true">Desliza para ver los {OBJETIVOS.length} objetivos</p>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- mapa: desde Colombia hacia los países donde ya hay estudiantes ---------- */
+/** Avión visto desde arriba, apuntando a la derecha y centrado en 0,0 (el script lo gira según la ruta). */
+const AVION = 'M8 0C8-.8 7.2-1.2 6-1.2H1.6L-2.6-7.6H-4.4L-1.9-1.2H-5.4L-7-3.6H-8.4L-7.4 0-8.4 3.6H-7L-5.4 1.2H-1.9L-4.4 7.6H-2.6L1.6 1.2H6C7.2 1.2 8 .8 8 0Z';
+
+export function Mundo() {
+  const { ancho, alto, origen, destinos } = MAPA;
+  return (
+    <section className="seccion mundo" id="paises" aria-labelledby="t-paises">
+      <div className="wrap">
+        <div className="mundo-cab">
+          <Revelar id="t-paises">Desde Colombia hasta Japón.</Revelar>
+          <p className="aparece" style={retraso('.3s')}>English Time ya tiene estudiantes en {PAISES.length + 1} países. Tomas tus clases por Zoom donde estés, y el horario se acuerda según tu zona horaria.</p>
+        </div>
+
+        <div className="mapa" id="mapa">
+          <img className="mapa-fondo" src="/assets/mapa-mundo.svg" alt="" width={ancho} height={alto} loading="lazy" />
+          <svg className="mapa-capa" viewBox={`0 0 ${ancho} ${alto}`} role="img" aria-label={`Mapa con rutas desde Colombia hacia ${PAISES.join(', ')}.`}>
+            <use className="mapa-colombia" href={`/assets/mapa-paises.svg#${origen.puntos}`} />
+            {destinos.map((d, i) => (
+              <g className="mapa-destino" data-i={i} key={d.pais}>
+                <use className="mapa-pais" href={`/assets/mapa-paises.svg#${d.puntos}`} />
+                <path className="mapa-ruta" d={d.ruta} />
+                <circle className="mapa-onda" cx={d.x} cy={d.y} r="4" />
+                <circle className="mapa-pin" cx={d.x} cy={d.y} r="4" />
+                <text className="mapa-nombre" x={d.x + d.etiqueta.dx} y={d.y + d.etiqueta.dy} textAnchor={d.etiqueta.ancla}>{d.pais}</text>
+                <path className="mapa-avion" d={AVION} />
+              </g>
+            ))}
+            <circle className="mapa-origen-onda" cx={origen.x} cy={origen.y} r="6" />
+            <circle className="mapa-origen" cx={origen.x} cy={origen.y} r="5.5" />
+            <text className="mapa-nombre mapa-nombre-origen" x={origen.x + 10} y={origen.y + 16}>Colombia</text>
+          </svg>
+        </div>
+
+        <ul className="mapa-paises" aria-label="Hora local en cada país">
+          <li className="mapa-chip origen"><b>Colombia</b><span data-zona={origen.zona} /></li>
+          {destinos.map((d, i) => (
+            <li key={d.pais}>
+              <button type="button" className="mapa-chip" data-i={i}><b>{d.pais}</b><span data-zona={d.zona} /></button>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -242,7 +346,8 @@ export function Promociones() {
                   aria-hidden={i === 0 ? undefined : true} inert={i === 0 ? undefined : true} key={p.pieza}>
                   <span className="chip">{p.chip}</span>
                   <h3>{p.titulo}</h3>
-                  <p className="precio">{p.precio}<small>{p.precioNota}</small></p>
+                  <p className="precio">{p.precio}<small>COP {p.precioNota}</small></p>
+                  <p className="precio-usd">≈ {usd(p.precio)}</p>
                   <p className="texto">{p.texto}</p>
                   <a className="btn btn-rojo btn-brillo" href={wa(p.mensaje)} {...externo}><Icono id="wa" />{p.boton}</a>
                 </div>
@@ -289,26 +394,47 @@ function Garantia() {
   );
 }
 
-/* ---------- planes mensuales ---------- */
+/* ---------- modalidades y planes mensuales ---------- */
 export function Planes() {
   return (
     <section className="seccion blanco" id="planes" aria-labelledby="t-planes">
       <div className="wrap">
         <div className="encabezado">
-          <Revelar id="t-planes">Planes mensuales de clases de inglés</Revelar>
-          <p className="aparece" style={retraso('.2s')}>Clases 1 a 1 cada mes, a precio normal. Escoges cuántas veces por semana.</p>
+          <Revelar id="t-planes">Clases particulares o en grupo, siempre por Zoom.</Revelar>
         </div>
+
+        <ul className="modalidades">
+          {MODALIDADES.map((m) => (
+            <li className={`modalidad modalidad-${m.id}`} key={m.id}>
+              <span className="modalidad-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  {m.id === 'particulares'
+                    ? <><circle cx="8" cy="8" r="3" /><path d="M2.5 19a5.5 5.5 0 0 1 11 0" /><rect x="14.5" y="6" width="7" height="5.5" rx="1.2" /><path d="M16 15.5h4" /></>
+                    : <><circle cx="12" cy="7.5" r="2.8" /><circle cx="5" cy="9.5" r="2.2" /><circle cx="19" cy="9.5" r="2.2" /><path d="M7 19a5 5 0 0 1 10 0M1.5 18a3.6 3.6 0 0 1 5.4-3.1M22.5 18a3.6 3.6 0 0 0-5.4-3.1" /></>}
+                </svg>
+              </span>
+              <h3>{m.titulo}</h3>
+              <p>{m.texto}</p>
+              <p className="modalidad-precio"><span>Desde</span> <b>{m.precio}</b> <span>{m.detalle}</span> <span className="usd">≈ {usd(m.precio)}</span></p>
+              {m.mensaje
+                ? <a className="enlace-wa" href={wa(m.mensaje)} {...externo}><Icono id="wa" />{m.boton}</a>
+                : <a className="enlace-wa" href="#planes-particulares">{m.boton}</a>}
+            </li>
+          ))}
+        </ul>
+
+        <h3 className="planes-titulo" id="planes-particulares">Planes mensuales de clases particulares</h3>
         <div className="planes">
           {PLANES.map((p, i) => (
             <div className="plan" style={i ? { transitionDelay: `.${i}s` } : undefined} key={p.veces}>
-              <div><h3>{p.veces}</h3><p className="detalle">{p.clases}{p.etiqueta && <span className="etiqueta">{p.etiqueta}</span>}</p></div>
-              <div className="precio"><b>{p.precio}</b><span>{p.porClase}</span></div>
+              <div><h3>{p.veces}</h3><p className="detalle">{p.clases}, {p.porClase}{p.etiqueta && <span className="etiqueta">{p.etiqueta}</span>}</p></div>
+              <div className="precio"><b>{p.precio}<small> COP</small></b><span>≈ {usd(p.precio)} al mes</span></div>
               <a className="btn btn-noche btn-chico" href={wa(p.mensaje)} {...externo}><Icono id="wa" />Elegir</a>
             </div>
           ))}
         </div>
         <Garantia />
-        <p className="nota">Precios en pesos colombianos. Pagas por Nequi, Daviplata, Davivienda o Bold; si estás fuera de Colombia, Luis te indica cómo pagar desde tu país.</p>
+        <p className="nota">Precios en pesos colombianos (COP). Los valores en dólares son aproximados, con la TRM del {FECHA_TRM} (${Math.round(TRM).toLocaleString('es-CO')} por dólar). Pagas por Nequi, Daviplata, Davivienda o Bold; si estás fuera de Colombia, Luis te indica cómo pagar desde tu país.</p>
       </div>
     </section>
   );
@@ -354,7 +480,7 @@ export function PiePagina() {
     <footer>
       <div className="wrap">
         <img src="/assets/logo-blanco.webp" alt="English Time" width={200} height={144} loading="lazy" />
-        <span>© 2026 English Time. Clases de inglés personalizadas 1 a 1 por Zoom, desde cualquier país.</span>
+        <span>© 2026 English Time. Clases de inglés por Zoom, particulares 1 a 1 y en grupo, desde cualquier país.</span>
       </div>
     </footer>
   );

@@ -22,7 +22,7 @@ export default function Interacciones() {
 
     /* 1. Entradas al hacer scroll: cada bloque se marca una sola vez cuando aparece. */
     const deck = document.getElementById('deck') as HTMLElement;
-    const revelables = todos('.revelar, .aparece, .escena, .versus-fila, .pasos, .plan, .objetivo, .cierre, .deck');
+    const revelables = todos('.revelar, .aparece, .escena, .versus-fila, .pasos, .plan, .objetivo, .modalidad, .cierre, .deck');
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((es) => {
         es.forEach((e) => {
@@ -78,12 +78,29 @@ export default function Interacciones() {
       todos<SVGElement>('.mano-h', dia).forEach((x) => { x.style.transform = 'rotate(' + (210 + girado * 0.5) + 'deg)'; });
       todos<SVGElement>('.mano-m', dia).forEach((x) => { x.style.transform = 'rotate(' + (girado * 6) + 'deg)'; });
     };
+    // La última escena es la hora real de quien visita: saludo y colores según el momento del día.
+    const momentoDe = (h: number) => (h < 5 || h >= 19 ? 'noche' : h < 10 ? 'manana' : h < 14 ? 'mediodia' : h < 17 ? 'tarde' : 'atardecer');
+    const saludoDe = (h: number) => (h >= 5 && h < 12 ? 'Buenos días' : h >= 12 && h < 19 ? 'Buenas tardes' : 'Buenas noches');
     const pintarAhora = () => {
       const d = new Date(), h = d.getHours(), m = d.getMinutes(), min = h * 60 + m;
-      (document.getElementById('previa-ahora') as HTMLElement).textContent = (h % 12 || 12) === 1 ? 'Y ahora mismo es la' : 'Y ahora mismo son las';
+      (document.getElementById('previa-ahora') as HTMLElement).textContent = saludoDe(h) + '. ' + ((h % 12 || 12) === 1 ? 'Ahora mismo es la' : 'Ahora mismo son las');
       (document.getElementById('hora-ahora') as HTMLElement).innerHTML = (h % 12 || 12) + ':' + dos(m) + '<small>' + (h < 12 ? 'a.m.' : 'p.m.') + '</small>';
       ahora.dataset.min = String(min);
-      if (activa === ahora) { mover(min); miniHora.textContent = etiqueta(min); }
+      ahora.dataset.momento = momentoDe(h);
+      if (activa === ahora) { mover(min); miniHora.textContent = etiqueta(min); dia.dataset.momento = ahora.dataset.momento; }
+      pintarZonas();
+    };
+    /* Hora local de cada país del mapa. */
+    const zonas = todos('[data-zona]');
+    const pintarZonas = () => {
+      const fecha = new Date();
+      zonas.forEach((z) => {
+        try {
+          const p = new Intl.DateTimeFormat('en-US', { timeZone: z.dataset.zona, hour: 'numeric', minute: '2-digit', hour12: true }).formatToParts(fecha);
+          const v = (t: string) => p.find((x) => x.type === t)?.value ?? '';
+          z.textContent = v('hour') + ':' + v('minute') + ' ' + (v('dayPeriod').toUpperCase() === 'AM' ? 'a.m.' : 'p.m.');
+        } catch { /* zona horaria no soportada: se queda sin hora */ }
+      });
     };
     pintarAhora();
     const relojAhora = window.setInterval(pintarAhora, 30000);
@@ -235,6 +252,130 @@ export default function Interacciones() {
 
     pintarDeck();
     estadoAuto();
+
+    /* 6. Sello de Black Friday: cambia de promoción, gira más rápido al pasar el mouse y se inclina hacia el puntero. */
+    const sellos = todos('.sello');
+    if (movimiento) {
+      let k = 0;
+      const cambiarOferta = window.setInterval(() => {
+        if (document.hidden) return;
+        k++;
+        sellos.forEach((s) => {
+          const ofertas = todos('.sello-oferta', s), n = ofertas.length;
+          ofertas.forEach((o, i) => { o.classList.toggle('on', i === k % n); o.classList.toggle('sale', i === (k - 1) % n); });
+        });
+      }, 2000);
+      limpiar.push(() => window.clearInterval(cambiarOferta));
+      sellos.forEach((s) => {
+        const giro = s.querySelector('.sello-giro');
+        const velocidad = (v: number) => giro?.getAnimations().forEach((a) => a.updatePlaybackRate(v));
+        escuchar(s, 'pointerenter', () => velocidad(5));
+        escuchar(s, 'pointerleave', () => velocidad(1));
+      });
+      const arte = document.querySelector('.sello-arte .sello-cuerpo') as HTMLElement | null;
+      const heroe = document.querySelector('.hero') as HTMLElement;
+      if (arte && matchMedia('(pointer: fine)').matches) {
+        escuchar(heroe, 'pointermove', ((e: PointerEvent) => {
+          const r = arte.getBoundingClientRect();
+          const x = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / 500));
+          const y = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / 500));
+          arte.style.setProperty('--ry', (x * 18).toFixed(1) + 'deg');
+          arte.style.setProperty('--rx', (-y * 18).toFixed(1) + 'deg');
+        }) as EventListener);
+        escuchar(heroe, 'pointerleave', () => { arte.style.removeProperty('--rx'); arte.style.removeProperty('--ry'); });
+      }
+    }
+
+    /* 7. Mapa: los aviones salen de Colombia hacia cada país y se quedan volando de vez en cuando. */
+    const mapa = document.getElementById('mapa');
+    if (mapa) {
+      const grupos = todos<SVGGElement>('.mapa-destino', mapa);
+      const rutas = grupos.map((g) => g.querySelector('.mapa-ruta') as SVGPathElement);
+      const aviones = grupos.map((g) => g.querySelector('.mapa-avion') as SVGPathElement);
+      const chips = todos<HTMLButtonElement>('.mapa-chip[data-i]');
+      const largos = rutas.map((r) => r.getTotalLength());
+      const vuelos: number[] = [];
+      const suave = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+      let escala = 1;
+      const medir = () => { escala = Math.min(2.6, Math.max(1, 900 / (mapa.clientWidth || 900))); };
+      medir();
+      escuchar(window, 'resize', medir);
+      limpiar.push(() => vuelos.forEach((v) => cancelAnimationFrame(v)));
+
+      const llegar = (i: number) => {
+        const g = grupos[i];
+        g.classList.add('llego');
+        g.classList.remove('pulso'); void g.getBoundingClientRect(); g.classList.add('pulso');
+      };
+      const volar = (i: number, ms: number, dibujar: boolean) => {
+        const ruta = rutas[i], avion = aviones[i], largo = largos[i], g = grupos[i];
+        cancelAnimationFrame(vuelos[i]);
+        g.classList.add('volando');
+        const t0 = performance.now();
+        const paso = (ahoraMs: number) => {
+          const t = Math.min(1, (ahoraMs - t0) / ms), e = suave(t), l = e * largo;
+          const p = ruta.getPointAtLength(l);
+          const a = ruta.getPointAtLength(Math.max(0, l - 0.6)), b = ruta.getPointAtLength(Math.min(largo, l + 0.6));
+          const angulo = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+          avion.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${angulo.toFixed(1)}) scale(${escala.toFixed(2)})`);
+          if (dibujar) ruta.style.strokeDashoffset = String(largo * (1 - e));
+          if (t < 1) { vuelos[i] = requestAnimationFrame(paso); return; }
+          g.classList.remove('volando');
+          llegar(i);
+        };
+        vuelos[i] = requestAnimationFrame(paso);
+      };
+
+      let armado = !movimiento, enVistaMapa = false, foco = -1;
+      if (!movimiento) grupos.forEach((g) => g.classList.add('llego'));
+      const despegar = () => {
+        rutas.forEach((r, i) => { r.style.strokeDasharray = largos[i] + ' ' + largos[i]; r.style.strokeDashoffset = String(largos[i]); });
+        mapa.classList.add('armado');
+        grupos.forEach((_, i) => despues(() => volar(i, 1400 + largos[i] * 1.1, true), 300 + i * 280));
+        // Después del despegue, cada pocos segundos sale otro avión por una ruta ya trazada.
+        let siguiente = 0;
+        despues(() => {
+          const bucle = window.setInterval(() => {
+            if (document.hidden || !enVistaMapa || foco >= 0) return;
+            const i = siguiente++ % grupos.length;
+            volar(i, 1600 + largos[i] * 1.6, false);
+          }, 1900);
+          limpiar.push(() => window.clearInterval(bucle));
+        }, 300 + grupos.length * 280 + 2600);
+      };
+      if ('IntersectionObserver' in window) {
+        const vistaMapa = new IntersectionObserver((es) => {
+          enVistaMapa = es[0].isIntersecting;
+          mapa.classList.toggle('en-vista', enVistaMapa);
+          if (enVistaMapa && !armado) { armado = true; despegar(); }
+        }, { threshold: 0.3 });
+        vistaMapa.observe(mapa);
+        limpiar.push(() => vistaMapa.disconnect());
+      } else if (!armado) { armado = true; despegar(); }
+
+      // Al pasar por (o tocar) un país de la lista, su ruta se destaca y sale un avión hacia allá.
+      const enfocar = (i: number) => {
+        foco = i;
+        mapa.classList.toggle('con-foco', i >= 0);
+        grupos.forEach((g, j) => g.classList.toggle('foco', j === i));
+        chips.forEach((c, j) => c.classList.toggle('foco', j === i));
+        if (i >= 0 && mapa.classList.contains('armado') && movimiento) volar(i, 1500 + largos[i] * 1.2, false);
+      };
+      let soltarFoco = 0;
+      chips.forEach((c) => {
+        const i = Number(c.dataset.i);
+        escuchar(c, 'pointerenter', ((e: PointerEvent) => { if (e.pointerType === 'mouse') enfocar(i); }) as EventListener);
+        escuchar(c, 'pointerleave', ((e: PointerEvent) => { if (e.pointerType === 'mouse') enfocar(-1); }) as EventListener);
+        escuchar(c, 'focus', () => enfocar(i));
+        escuchar(c, 'blur', () => enfocar(-1));
+        escuchar(c, 'click', () => {
+          enfocar(i);
+          window.clearTimeout(soltarFoco);
+          soltarFoco = window.setTimeout(() => { if (document.activeElement !== c) enfocar(-1); }, 2600);
+        });
+      });
+      limpiar.push(() => window.clearTimeout(soltarFoco));
+    }
 
     return () => {
       temporizadores.forEach((t) => window.clearTimeout(t));
