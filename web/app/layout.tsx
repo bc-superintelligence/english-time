@@ -22,12 +22,12 @@ export const metadata: Metadata = {
     url: '/',
     siteName: NEGOCIO.nombre,
     title: 'English Time: imagina un día hablando inglés',
-    description: 'Clases de inglés en vivo por Zoom, particulares 1 a 1 y en grupo, desde cualquier país. Tu horario, tu nivel y tus clases particulares nunca se pierden.',
+    description: 'Clases de inglés en vivo por Zoom, particulares 1 a 1 y grupales, desde cualquier país. Tu horario, tu nivel y tus clases particulares nunca se pierden.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'English Time: clases de inglés por Zoom, 1 a 1 y en grupo',
-    description: 'Clases de inglés online en vivo por Zoom, particulares y en grupo, a tu ritmo y en tu horario.',
+    title: 'English Time: clases de inglés por Zoom, 1 a 1 y grupales',
+    description: 'Clases de inglés online en vivo por Zoom, particulares y grupales, a tu ritmo y en tu horario.',
   },
   robots: {
     index: true,

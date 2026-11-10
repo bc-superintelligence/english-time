@@ -100,7 +100,7 @@ export function Heroe() {
       <div className="wrap hero-grid">
         <div className="texto-hero">
           <Saludo />
-          <Revelar as="h1" style={retraso('.25s')} tema="Clases de inglés en vivo por Zoom: particulares 1 a 1 y en grupo">Imagina un día hablando inglés.</Revelar>
+          <Revelar as="h1" style={retraso('.25s')} tema="Clases de inglés en vivo por Zoom: particulares 1 a 1 y grupales">Imagina un día hablando inglés.</Revelar>
           <p className="lead aparece" style={retraso('.75s')}>Sin traductor, sin pena y sin quedarte callado. Baja y vívelo hora por hora: así cambia tu vida cuando por fin hablas inglés.</p>
           <div className="acciones aparece" style={retraso('.95s')}>
             <a className="btn btn-rojo btn-brillo" href={wa(MENSAJES.general)} {...externo}><Icono id="wa" />Escribirle a Luis por WhatsApp</a>
@@ -400,7 +400,7 @@ export function Planes() {
     <section className="seccion blanco" id="planes" aria-labelledby="t-planes">
       <div className="wrap">
         <div className="encabezado">
-          <Revelar id="t-planes">Clases particulares o en grupo, siempre por Zoom.</Revelar>
+          <Revelar id="t-planes">Clases particulares o grupales, siempre por Zoom.</Revelar>
         </div>
 
         <ul className="modalidades">
@@ -480,7 +480,7 @@ export function PiePagina() {
     <footer>
       <div className="wrap">
         <img src="/assets/logo-blanco.webp" alt="English Time" width={200} height={144} loading="lazy" />
-        <span>© 2026 English Time. Clases de inglés por Zoom, particulares 1 a 1 y en grupo, desde cualquier país.</span>
+        <span>© 2026 English Time. Clases de inglés por Zoom, particulares 1 a 1 y grupales, desde cualquier país.</span>
       </div>
     </footer>
   );

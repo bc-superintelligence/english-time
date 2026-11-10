@@ -2,11 +2,11 @@ import { FIN_PROMOS, GARANTIA, NEGOCIO, PLANES, PREGUNTAS, SITIO, TELEFONO, WHAT
 
 /* Palabras clave principales: guían títulos, descripciones y datos estructurados. */
 export const SEO = {
-  titulo: 'Clases de inglés online por Zoom: 1 a 1 y en grupo | English Time',
-  descripcion: 'Clases de inglés en vivo por Zoom, particulares 1 a 1 y en grupo, desde cualquier país. Preparación para certificaciones y ciudadanía americana. Precios en COP y USD.',
+  titulo: 'Clases de inglés online por Zoom: 1 a 1 y grupales | English Time',
+  descripcion: 'Clases de inglés en vivo por Zoom, particulares 1 a 1 y grupales, desde cualquier país. Preparación para certificaciones y ciudadanía americana. Precios en COP y USD.',
   palabrasClave: [
     'clases de inglés', 'clases de inglés online', 'clases de inglés personalizadas', 'aprender inglés',
-    'clases de inglés 1 a 1', 'clases particulares de inglés online', 'clases de inglés en grupo', 'profesor de inglés', 'inglés por Zoom', 'clases de inglés online desde cualquier país', 'clases de inglés Colombia',
+    'clases de inglés 1 a 1', 'clases particulares de inglés online', 'clases grupales de inglés', 'profesor de inglés', 'inglés por Zoom', 'clases de inglés online desde cualquier país', 'clases de inglés Colombia',
     'preparación examen de ciudadanía americana', 'clases de inglés para la ciudadanía', 'preparación para exámenes de certificación de inglés',
     'inglés conversacional', 'inglés para viajar', 'inglés para el trabajo', 'inglés desde cero',
     'curso de inglés online', 'clases particulares de inglés',
@@ -31,7 +31,7 @@ export function datosEstructurados() {
     areaServed: 'Worldwide',
     availableLanguage: ['es', 'en'],
     knowsAbout: [
-      'Inglés', 'Clases particulares de inglés', 'Clases de inglés en grupo', 'Inglés conversacional', 'Inglés para viajar', 'Inglés para el trabajo', 'Inglés desde cero',
+      'Inglés', 'Clases particulares de inglés', 'Clases grupales de inglés', 'Inglés conversacional', 'Inglés para viajar', 'Inglés para el trabajo', 'Inglés desde cero',
       'Preparación para el examen de ciudadanía de Estados Unidos', 'Preparación para exámenes de certificación de inglés',
     ],
     contactPoint: {
@@ -157,7 +157,7 @@ export function datosEstructurados() {
   const grupo = {
     '@type': 'Course',
     '@id': id('grupo'),
-    name: 'Clases de inglés en grupo por Zoom',
+    name: 'Clases grupales de inglés por Zoom',
     description: 'Clases de inglés en vivo por Zoom con otros estudiantes, en un horario fijo y a un precio más bajo que las clases particulares.',
     provider: proveedor,
     inLanguage: 'es',

@@ -9,7 +9,7 @@ export const SITIO = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://englishtime.c
 export const NEGOCIO = {
   nombre: 'English Time',
   lema: 'easy, fast, fun!',
-  descripcion: 'Academia de inglés en línea con clases en vivo por Zoom, particulares 1 a 1 y en grupo, para estudiantes en cualquier país. Tú escoges el horario, empiezas en tu nivel, hablas desde el primer día y tus clases particulares nunca se pierden: si no puedes asistir, se reprograman.',
+  descripcion: 'Academia de inglés en línea con clases en vivo por Zoom, particulares 1 a 1 y grupales, para estudiantes en cualquier país. Tú escoges el horario, empiezas en tu nivel, hablas desde el primer día y tus clases particulares nunca se pierden: si no puedes asistir, se reprograman.',
 };
 
 export const WHATSAPP = '573016507626';
@@ -91,7 +91,7 @@ export const ESCENAS: Escena[] = [
 ];
 
 export const VERSUS: { antes: string; despues: string }[] = [
-  { antes: 'Salones de 30, donde hablas dos minutos por clase.', despues: 'Clases particulares 1 a 1 o en grupo, hechas para que hables.' },
+  { antes: 'Salones de 30, donde hablas dos minutos por clase.', despues: 'Clases particulares 1 a 1 o grupales, hechas para que hables.' },
   { antes: 'Si faltas a una clase, la pierdes.', despues: 'Si no puedes asistir, tu clase se reprograma. Nunca la pierdes.' },
   { antes: 'Gramática en el tablero y cero conversación.', despues: 'Hablas desde el primer día, a tu nivel.' },
   { antes: 'Horarios fijos y tráfico para llegar a la academia.', despues: 'En vivo por Zoom, desde tu casa y en el horario que tú escojas.' },
@@ -101,7 +101,7 @@ export const VERSUS: { antes: string; despues: string }[] = [
 
 export const PASOS: { titulo: string; texto: string }[] = [
   { titulo: 'Le escribes a Luis por WhatsApp.', texto: 'Le cuentas para qué quieres el inglés y cuánto tiempo tienes.' },
-  { titulo: 'Escoges tu plan y tu horario.', texto: 'Clases particulares o en grupo, un plan mensual o una promo de Black Friday.' },
+  { titulo: 'Escoges tu plan y tu horario.', texto: 'Clases particulares o grupales, un plan mensual o una promo de Black Friday.' },
   { titulo: 'Hablas en tu primera clase.', texto: 'Desde el primer día, a tu nivel y sin pena.' },
 ];
 
@@ -112,7 +112,7 @@ export const CINTA: { texto: string; destacado?: string }[] = [
   { texto: 'Paga un mes, estudia dos' },
   { texto: 'Plan 90: ', destacado: '15% menos' },
   { texto: 'Congela tu precio ', destacado: '2026' },
-  { texto: 'Clases particulares y en grupo por Zoom' },
+  { texto: 'Clases particulares y grupales por Zoom' },
   { texto: 'Tus clases nunca se pierden' },
   { texto: 'Preparación para la ciudadanía americana' },
 ];
@@ -178,7 +178,7 @@ export const PLANES: { veces: string; clases: string; precio: string; porClase: 
 ];
 
 export const PREGUNTAS: { pregunta: string; respuesta: string }[] = [
-  { pregunta: '¿Hay clases particulares y clases en grupo?', respuesta: 'Sí, las dos, siempre en vivo por Zoom. En las clases particulares 1 a 1 estás solo con tu profe y escoges el horario. En las clases en grupo estudias con otros estudiantes, en un horario fijo y a un precio más bajo.' },
+  { pregunta: '¿Hay clases particulares y clases grupales?', respuesta: 'Sí, las dos, siempre en vivo por Zoom. En las clases particulares 1 a 1 estás solo con tu profe y escoges el horario. En las clases grupales estudias con otros estudiantes, en un horario fijo y a un precio más bajo.' },
   { pregunta: '¿Cómo son las clases de inglés personalizadas?', respuesta: 'Son clases 1 a 1 en vivo por Zoom: solo tú y tu profe. Avanzas a tu ritmo, en tu nivel y con conversación desde el primer día.' },
   { pregunta: '¿Las clases de inglés son online o presenciales?', respuesta: 'Son online, en vivo por Zoom. Puedes tomarlas desde cualquier país del mundo con una conexión a internet, y el horario se acuerda según tu zona horaria.' },
   { pregunta: '¿Qué pasa si no puedo asistir a una clase?', respuesta: 'Tu clase no se pierde: se reprograma para otro día y otra hora. Esto aplica para las clases personalizadas 1 a 1.' },
@@ -239,9 +239,9 @@ export const MODALIDADES: { id: 'particulares' | 'grupo'; titulo: string; texto:
     precio: '$480.000', detalle: 'COP al mes', boton: 'Ver los planes',
   },
   {
-    id: 'grupo', titulo: 'Clases en grupo',
+    id: 'grupo', titulo: 'Clases grupales',
     texto: 'Estudias en vivo con otros estudiantes, en un horario fijo y a un precio más bajo. Como el Bootcamp Navideño de diciembre.',
-    precio: '$49.000', detalle: 'COP el Bootcamp de 7 días', boton: 'Preguntar por los grupos',
-    mensaje: 'Hola Luis, quiero información sobre las clases de inglés en grupo.',
+    precio: '$49.000', detalle: 'COP el Bootcamp de 7 días', boton: 'Preguntar por las clases grupales',
+    mensaje: 'Hola Luis, quiero información sobre las clases grupales de inglés.',
   },
 ];

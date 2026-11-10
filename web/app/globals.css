@@ -604,7 +604,7 @@ footer img { height: 44px; width: auto; }
 .mapa-chip:hover, .mapa-chip.foco { background: rgba(212,17,31,.24); border-color: rgba(255,107,117,.7); transform: translateY(-2px); }
 li.mapa-chip.origen { cursor: default; background: rgba(212,17,31,.2); border-color: rgba(255,107,117,.45); }
 
-/* ---------- modalidades: particulares y en grupo ---------- */
+/* ---------- modalidades: particulares y grupales ---------- */
 .modalidades { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .modalidad { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 30px 32px 24px; border-radius: 22px; }
 .modalidad-particulares { background: var(--noche); color: #fff; }

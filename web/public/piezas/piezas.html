@@ -101,7 +101,7 @@ body.solo .ad:not(.on) { display: none; }
 }
 .pass .stub::before { top: -22px; }
 .pass .stub::after { bottom: -22px; }
-.pass .stub span { font-size: 26px; font-weight: 600; color: #5a6680; }
+.pass .stub > span { font-size: 26px; font-weight: 600; color: #5a6680; }
 .pass .stub b { font-family: 'Bodoni Moda', serif; font-size: 66px; font-weight: 700; color: var(--rojo); line-height: 1; margin-top: 6px; }
 .pass .stub i { font-style: normal; font-size: 28px; font-weight: 600; margin-top: 10px; color: var(--noche); }
 
@@ -140,7 +140,7 @@ body.solo .ad:not(.on) { display: none; }
   padding: 18px 0; border-top: 2px solid rgba(255,255,255,.18);
 }
 .tabla .row:last-child { border-bottom: 2px solid rgba(255,255,255,.18); }
-.tabla .row span { font-size: 38px; font-weight: 600; }
+.tabla .row > span { font-size: 38px; font-weight: 600; }
 .tabla .row s { font-size: 32px; opacity: .55; }
 .tabla .row b { font-family: 'Bodoni Moda', serif; font-size: 54px; font-weight: 700; }
 
@@ -155,7 +155,7 @@ body.solo .ad:not(.on) { display: none; }
 .congela p { font-size: 37px; line-height: 1.32; margin-top: 28px; max-width: 860px; color: #24345a; position: relative; z-index: 2; }
 .precios { display: flex; gap: 18px; margin-top: 48px; position: relative; z-index: 2; }
 .precios div { flex: 1; min-width: 0; background: #fff; border-radius: 26px; padding: 24px 22px 22px; }
-.precios span { display: block; font-size: 28px; font-weight: 600; color: #4a5a7d; }
+.precios div > span { display: block; font-size: 28px; font-weight: 600; color: #4a5a7d; }
 .precios b { display: block; font-family: 'Bodoni Moda', serif; font-size: 50px; font-weight: 700; margin-top: 6px; }
 .congela .cuotas { margin-top: 30px; font-size: 36px; font-weight: 700; color: var(--rojo); position: relative; z-index: 2; }
 /* precios: tamaño óptico de texto para que los trazos finos aguanten en el teléfono */
@@ -167,14 +167,31 @@ body.solo .ad:not(.on) { display: none; }
 .dosporuno h2, .congela h2 { font-weight: 700; font-optical-sizing: none; font-variation-settings: 'opsz' 28; letter-spacing: -.01em; }
 .dosporuno p, .congela p { color: var(--noche); font-weight: 500; }
 .dosporuno .foot .note, .congela .foot .note, .dosporuno .badge small, .congela .badge small { opacity: 1; font-weight: 600; }
-.pass .f span, .pass .stub span { color: #3B4868; }
-.precios span { color: #33415F; }
+.pass .f span, .pass .stub > span { color: #3B4868; }
+.precios div > span { color: #33415F; }
 .plan90 h2, .bootcamp .side h2 { font-weight: 700; font-optical-sizing: none; font-variation-settings: 'opsz' 28; letter-spacing: -.01em; }
 .tabla .row s { opacity: .72; }
 .bootcamp .badge small, .bootcamp .foot .note, .bootcamp .side p, .plan90 .foot .note { opacity: 1; font-weight: 600; }
 .dosporuno .num .x { font-weight: 500; font-optical-sizing: none; font-variation-settings: 'opsz' 6; }
 .stamp span { font-weight: 600; font-optical-sizing: none; font-variation-settings: 'opsz' 18; }
 .portada .intro, .plan90 .sub, .portada .badge small, .plan90 .badge small { opacity: .95; }
+
+/* Moneda: cada precio dice COP y su equivalente aproximado en dólares (lo calcula el script del final con la TRM). */
+.moneda {
+  display: block; font-family: 'Hanken Grotesk', sans-serif; font-style: normal; font-size: 29px; font-weight: 600;
+  line-height: 1.18; letter-spacing: 0; font-variation-settings: normal; white-space: nowrap;
+}
+.portada li .monto { display: flex; align-items: center; gap: 16px; }
+.portada li .moneda { font-size: 28px; opacity: .88; }
+.pass .stub .moneda { color: #3B4868; margin-top: 8px; }
+.tabla .row { padding: 13px 0; }
+.plan90 .num { font-size: 330px; }
+.plan90 .hero { margin-top: 26px; }
+.plan90 h2 { margin-top: 34px; }
+.tabla { margin-top: 30px; }
+.tabla .row b { text-align: right; }
+.tabla .row .moneda { opacity: .88; margin-top: 2px; }
+.precios .moneda { color: #33415F; margin-top: 6px; font-size: 27px; }
 /* Números gigantes, cursivas y titular de portada: corte de Bodoni con trazos finos más gruesos,
    para que no "vibren" ni se pierdan en el teléfono. */
 .num, .portada h1 { font-optical-sizing: none; font-variation-settings: 'opsz' 36; }
@@ -217,8 +234,8 @@ body.solo .ad:not(.on) { display: none; }
   <h1>Es hora de hablar inglés.</h1>
   <p class="intro">Cuatro promociones para empezar ya.</p>
   <ul>
-    <li>Bootcamp Navideño <b>$49.000</b></li>
-    <li>Paga un mes, estudia dos <b>$480.000</b></li>
+    <li>Bootcamp Navideño <span class="monto"><b>$49.000</b><small class="moneda">COP<br>≈ <span data-cop="49000">US$15</span></small></span></li>
+    <li>Paga un mes, estudia dos <span class="monto"><b>$480.000</b><small class="moneda">COP<br>≈ <span data-cop="480000">US$150</span></small></span></li>
     <li>Plan 90, trimestral <b>15% menos</b></li>
     <li>Congela tu precio <b>2026 en 2027</b></li>
   </ul>
@@ -250,7 +267,7 @@ body.solo .ad:not(.on) { display: none; }
       <div class="f"><span>Salida</span><strong>Diciembre</strong></div>
       <div class="f"><span>Clases</span><strong>45 min en vivo</strong></div>
     </div>
-    <div class="stub"><span>Tarifa</span><b>$49.000</b><i>Cupos limitados</i></div>
+    <div class="stub"><span>Tarifa</span><b>$49.000</b><small class="moneda">COP ≈ <span data-cop="49000">US$15</span></small><i>Cupos limitados</i></div>
   </div>
   <div class="foot">
     <div class="wa"><svg><use href="#wa"/></svg>+57 301 650 7626</div>
@@ -267,7 +284,7 @@ body.solo .ad:not(.on) { display: none; }
   </div>
   <div class="num">2<span class="x">×</span>1</div>
   <h2>Paga un mes, estudia dos.</h2>
-  <p>Pack de 8 clases al mes, 2 veces por semana. Pagas <strong>$480.000</strong> y el segundo mes va por nuestra cuenta.</p>
+  <p>Pack de 8 clases al mes, 2 veces por semana. Pagas <strong>$480.000 COP</strong> (unos <span data-cop="480000">US$150</span>) y el segundo mes va por nuestra cuenta.</p>
   <div class="stamp"><div><span>solo</span><b>5</b><span>cupos</span></div></div>
   <img class="mascota" src="../assets/mascota.webp" alt="">
   <div class="foot">
@@ -287,13 +304,13 @@ body.solo .ad:not(.on) { display: none; }
   <h2>Tres meses, 15% menos.</h2>
   <p class="sub">Plan trimestral de clases 1 a 1, en un solo pago.</p>
   <div class="tabla">
-    <div class="row"><span>2 veces por semana</span><s>$1.440.000</s><b>$1.220.000</b></div>
-    <div class="row"><span>3 veces por semana</span><s>$2.100.000</s><b>$1.780.000</b></div>
-    <div class="row"><span>4 veces por semana</span><s>$2.550.000</s><b>$2.160.000</b></div>
+    <div class="row"><span>2 veces por semana</span><s>$1.440.000</s><b>$1.220.000<small class="moneda">COP ≈ <span data-cop="1220000">US$375</span></small></b></div>
+    <div class="row"><span>3 veces por semana</span><s>$2.100.000</s><b>$1.780.000<small class="moneda">COP ≈ <span data-cop="1780000">US$550</span></small></b></div>
+    <div class="row"><span>4 veces por semana</span><s>$2.550.000</s><b>$2.160.000<small class="moneda">COP ≈ <span data-cop="2160000">US$665</span></small></b></div>
   </div>
   <div class="foot">
     <div class="wa"><svg><use href="#wa"/></svg>+57 301 650 7626</div>
-    <div class="note">Ahorras hasta $390.000</div>
+    <div class="note">Ahorras hasta<br>$390.000 COP ≈ <span data-cop="390000">US$120</span></div>
   </div>
 </section>
 
@@ -321,9 +338,9 @@ body.solo .ad:not(.on) { display: none; }
   <h2>Congela tu precio.</h2>
   <p>Inscríbete antes del 28 de noviembre y estudia todo 2027 con la tarifa de 2026.</p>
   <div class="precios">
-    <div><span>2 por semana</span><b>$480.000</b></div>
-    <div><span>3 por semana</span><b>$700.000</b></div>
-    <div><span>4 por semana</span><b>$850.000</b></div>
+    <div><span>2 por semana</span><b>$480.000</b><small class="moneda">COP ≈ <span data-cop="480000">US$150</span></small></div>
+    <div><span>3 por semana</span><b>$700.000</b><small class="moneda">COP ≈ <span data-cop="700000">US$215</span></small></div>
+    <div><span>4 por semana</span><b>$850.000</b><small class="moneda">COP ≈ <span data-cop="850000">US$265</span></small></div>
   </div>
   <div class="cuotas">Tu primer mes en dos cuotas: 50% hoy y 50% en enero.</div>
   <div class="foot">
@@ -333,6 +350,14 @@ body.solo .ad:not(.on) { display: none; }
 </section>
 
 <script>
+  // Dólares aproximados con la misma TRM y el mismo redondeo de usd() en lib/contenido.tsx.
+  // Si cambia la TRM, cámbiala aquí y allá, y corre npm run piezas.
+  const TRM = 3237.83;
+  document.querySelectorAll('[data-cop]').forEach((el) => {
+    const v = Number(el.dataset.cop) / TRM, r = v >= 100 ? Math.round(v / 5) * 5 : Math.round(v);
+    el.textContent = 'US$' + r.toLocaleString('en-US');
+  });
+
   const p = new URLSearchParams(location.search).get('p');
   if (p) {
     document.body.classList.add('solo');
